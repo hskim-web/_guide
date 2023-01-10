@@ -1,0 +1,177 @@
+:root {
+  --color-primary: #0ca9cb;
+}
+
+article table {
+  display: inline-block;
+}
+
+table th > *,
+table td > * {
+  display: inline-block;
+}
+
+table,
+.params,
+.props {
+  box-shadow: none !important;
+  border: 2px dashed #f1f1f1;
+  width: inherit !important;
+}
+
+table td,
+.params td {
+  border-top: 2px dashed #f1f1f1 !important;
+}
+
+thead th {
+  color: var(--color-primary);
+}
+
+td.description > h6,
+h5.subsection-title {
+  display: block;
+  margin: 0;
+  color: #666;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.container-overview .details {
+  margin: 1rem 0 4rem;
+}
+
+.allow-overflow {
+  display: block;
+}
+
+.navbar-ham {
+  border-radius: 0.25rem;
+}
+
+.sidebar-main-content {
+  height: calc(100vh - 167px);
+}
+
+.sidebar-main-content .accordion .accordion-heading {
+  align-items: center;
+}
+
+.accordion:not(.collapsed) svg {
+  transform: rotate(180deg);
+}
+
+.accordion.collapsed svg {
+  transform: rotate(360deg) !important;
+}
+
+h3.subsection-title {
+  margin: 4rem 0 1rem;
+}
+
+h4.name {
+  font-size: 1.5rem;
+  margin: 3rem 0 1rem;
+}
+
+.container-overview > h4.name {
+  margin-top: 0;
+}
+
+h5.subsection-title {
+  margin: 20px 0 0 0;
+}
+
+.subsection-title + h4.name {
+  margin-top: 0;
+}
+
+.method-member-container table,
+.allow-overflow > table {
+  margin-top: 12px !important;
+}
+
+.method-member-container > strong {
+  display: block;
+}
+
+.details {
+  margin-bottom: 0;
+}
+
+.details + .subsection-title {
+  margin: 4rem 0 1rem 0;
+}
+
+.details ~ .method-member-container strong {
+  display: block;
+}
+
+.details ~ .method-member-container .param-desc {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+.details ~ .method-member-container .param-desc p {
+  margin: 0;
+}
+
+.details ~ .method-member-container dl.param-type {
+  display: inline-block;
+  margin: 0;
+  margin-top: 12px;
+  padding-bottom: 0;
+}
+
+.details ~ .method-member-container dl.param-type dt {
+  display: none;
+}
+
+.details
+  ~ .method-member-container
+  .param-desc
+  ~ dl.param-type
+  span.param-type {
+  margin-left: 8px;
+}
+
+dl.param-type span.param-type {
+  font-size: 1rem;
+}
+
+.param-desc {
+  margin-top: 8px;
+}
+
+.param-type:not(dl) {
+  display: inline-block;
+  padding: 0.1rem 0.4rem !important;
+  margin-top: 0;
+  background: #eee;
+  border-radius: 0.3rem;
+  color: #4d4e53;
+}
+
+.footer hr {
+  margin-bottom: 8px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  transition: ease 0.5s all;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+}

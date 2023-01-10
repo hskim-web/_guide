@@ -1,0 +1,3128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding favicon -->
+    
+
+    <!-- Adding meta -->
+    
+
+    <!-- Adding external script-->
+    
+
+    <!-- Adding external style-->
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+    
+    <link type="text/css" rel="stylesheet" href="custom-jsdoc.css">
+    
+    
+
+    <!-- Adding overlay script-->
+    
+
+    <!-- Adding overlay style-->
+    
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css"
+      integrity="sha512-pYQcc5kgavar0ah58/O8hw/6Tbo3mWlmQTmvoi1i96cBz7jQYS9as5J+Nfy32rAHY6CgR9ExwnFMcBdGVcKM7g=="
+      crossorigin="anonymous" />
+    
+
+
+    <title>
+      plugins/petra-grid/petra.grid.re.js
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-light.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="8867133" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="API.html">API</a></li><li class="accordion-list" id=""><a href="EDITOR.html">EDITOR</a></li><li class="accordion collapsed child" id=9350285><div class="accordion-heading child"><a href="SQL.html">SQL</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="SQL.html#camelToUnderscore">camelToUnderscore</a></li><li data-type='method'><a href="SQL.html#closeConnection">closeConnection</a></li><li data-type='method'><a href="SQL.html#getExecutionSql">getExecutionSql</a></li><li data-type='method'><a href="SQL.html#keywordCheck">keywordCheck</a></li><li data-type='method'><a href="SQL.html#moreData">moreData</a></li><li data-type='method'><a href="SQL.html#multiQuery">multiQuery</a></li><li data-type='method'><a href="SQL.html#numberFormat">numberFormat</a></li><li data-type='method'><a href="SQL.html#selectCheck">selectCheck</a></li><li data-type='method'><a href="SQL.html#setSqlColumns">setSqlColumns</a></li><li data-type='method'><a href="SQL.html#singleQuery">singleQuery</a></li><li data-type='method'><a href="SQL.html#sqlResultInfo">sqlResultInfo</a></li><li data-type='method'><a href="SQL.html#sqlSystemInfo">sqlSystemInfo</a></li></ul></li></ul> </div><div class="accordion collapsed" id="2358335" > <h3 class="accordion-heading">Namespaces<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="API.delete.html">delete</a></li><li class="accordion-list" id=""><a href="API.get.html">get</a></li><li class="accordion-list" id=""><a href="API.post.html">post</a></li><li class="accordion-list" id=""><a href="API.put.html">put</a></li><li class="accordion-list" id=""><a href="CHECK.html">CHECK</a></li><li class="accordion-list" id=""><a href="CHECK.isEmpty.html">isEmpty</a></li><li class="accordion-list" id=""><a href="EDITOR.clearHighlightText.html">clearHighlightText</a></li><li class="accordion-list" id=""><a href="EDITOR.getAllText.html">getAllText</a></li><li class="accordion-list" id=""><a href="EDITOR.highlightText.html">highlightText</a></li><li class="accordion-list" id=""><a href="EDITOR.initialize.html">initialize</a></li><li class="accordion-list" id=""><a href="EDITOR.setAllText.html">setAllText</a></li><li class="accordion-list" id=""><a href="SQL.action.html">action</a></li><li class="accordion-list" id=""><a href="SQL.action.align.html">align</a></li><li class="accordion-list" id=""><a href="SQL.execute.html">execute</a></li><li class="accordion-list" id=""><a href="SQL.isExistEditor.html">isExistEditor</a></li><li class="accordion-list" id=""><a href="SQL.sort.html">sort</a></li><li class="accordion-list" id=""><a href="SQL.toTransactionList.html">toTransactionList</a></li></ul> </div><div class="accordion collapsed" id="7334391" > <h3 class="accordion-heading">Global<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="global.html#executingButtonClickEvent">executingButtonClickEvent</a></li><li class="accordion-list" id=""><a href="global.html#toggleTransaction">toggleTransaction</a></li></ul> </div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        plugins/petra-grid/petra.grid.re.js
+      </h1>
+      
+
+      
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+
+$.PetraGrid = function (selector) {
+  return $(document.querySelector("#" + selector)).data("this");
+};
+
+class PetraGrid {
+  constructor(config) {
+    // cofing set
+    this.config = config;
+    this.scrollEle = $("#" + config.scrollEle);
+    this.gridEle = $("#" + config.gridEle);
+    this.rowHeight = config.rowHeight ? config.rowHeight : 30;
+    this.fontSize = config.fontSize ? config.fontSize : 12;
+    this.columns = config.columns;
+    this.wheelIncrement = config.wheelIncrement ? config.wheelIncrement : 3;
+
+    // 변수 초기화
+    //        this.virtureHeight = 0;				// 가상 높이
+    this.scrollHeight = 0; // 실제 높이
+    //        this.pageHeight = 3000;				// 페이지 높이
+    //        this.pageCount = 0;					// 페이지 개수
+    this.viewHeight = 300; // view 높이
+    //        this.skipCoefficient = 0;			// 특정 스크롤 위치로 넘길때 skip 하는 계수
+    //        this.page = 0;                   	// 현재 페이지
+    //        this.pageOffset = 0;                // 현재 페이지 위치
+    this.bufferRowCount = 5; // 위 아래로 여분의 로우 갯수(성능 관련)
+    this.prevScrollTop = 0; // 이전 스크롤 위치
+    this.viewRowCount = 10; // 인덱스 로우 개수
+    this.rows = {}; // 보여지는 tr 엘리먼트
+    this.data = []; // 실제 데이터 list
+    this.filteredData = []; // 필터링된 데이터
+    this.isFiltered = false; // 필터링 여부
+    this.totalWidth = 50; // row 총 width(인덱스 컬럼을 위해 50을 기본적으로 잡아준다)
+    this.lastX = 0; // scroll 방향 구분하기 위하여
+    this.deduplicationData = []; // 중복 제거된 column 데이터
+    this.checkedGrid = null; // 필터링 그리드 인스턴스
+    this.cursorIndex = { row: 0, col: 0 }; // cursor 인덱스
+    this.headerEle = null; // header 엘리먼트
+    this.indexEle = null; // 좌측에 고정적으로 로우 인덱스 보여주는 컬럼 엘리먼트
+    this.resizeBarEle = null; // 컬럼 리사이즈바 엘리먼트
+    this.resizeBarX = 0; // 리사이징 시작시 엘리먼트 위치 저장
+    this.resizeColumnEle = null; // 리사이즈될 컬럼 엘리먼트
+    this.isDragCell = false; // 셀을 드래고 하고있는지 여부
+    this.dragStartIndex = null; // 드래그 시작 index
+    this.dragEndIndex = null; // 드래그 마지막 index
+    this.selectedData = new Map(); // 선택된 cell 인덱스들
+    this.selectionCellEle = null;
+    this.undoStatck = []; //실행취소를 위한 작업 수행 데이터
+    this.sortColumns = [];
+
+    this.initialize();
+  }
+
+  initialize() {
+    this.initViewConfig();
+    this.initScrollConfig();
+
+    this.scrollEle.scroll((e) => this.onScroll(e));
+    this.scrollEle.off("wheel").on("wheel", (e) => this.onWheel(e));
+    this.scrollEle
+      .off("keydown", ">.petra-grid-content")
+      .on("keydown", ">.petra-grid-content", (e) => this.onKeyDownCell(e));
+    this.scrollEle
+      .off("mousedown", ">.petra-grid-content>tr>td")
+      .on("mousedown", ">.petra-grid-content>tr>td", (e) =>
+        this.onMouseDownCell(e)
+      );
+    this.scrollEle
+      .off("mouseup", ".>petra-grid-content>tr>td")
+      .on("mouseup", ">.petra-grid-content>tr>td", (e) =>
+        this.onMouseUpCell(e)
+      );
+    this.scrollEle
+      .off("mouseenter", ">.petra-grid-content>tr>td")
+      .on("mouseenter", ">.petra-grid-content>tr>td", (e) =>
+        this.onMouseEnterCell(e)
+      );
+    this.scrollEle
+      .off("dblclick", ">.petra-grid-content>tr>td")
+      .on("dblclick", ">.petra-grid-content>tr>td", (e) => this.editingCell());
+    this.scrollEle
+      .off("mousedown", ">.petra-grid-content>tr>td>input")
+      .on("mousedown", ">.petra-grid-content>tr>td>input", (e) =>
+        e.stopPropagation()
+      );
+    this.scrollEle
+      .off("mouseup", ">.petra-grid-content>tr>td>input")
+      .on("mouseup", ">.petra-grid-content>tr>td>input", (e) =>
+        e.stopPropagation()
+      );
+
+    this.gridEle
+      .off("mouseup", "td")
+      .on("mouseup", "td", (e) => this.onMouseupTh(e));
+    this.gridEle
+      .off("mousemove", "td")
+      .on("mousemove", "td", (e) => this.onMousemoveTh(e));
+
+    document.removeEventListener("paste", (e) => this.selectedPaste(e));
+    document.addEventListener("paste", (e) => this.selectedPaste(e));
+
+    this.createFilterPopup();
+    this.createEmptyEle();
+    if (this.config.search) this.createSearchEle();
+    // this.initContextMenu();
+  }
+
+  setHeight(height) {
+    this.viewHeight = height;
+    this.viewRowCount = Math.ceil(this.viewHeight / this.config.rowHeight);
+
+    this.scrollEle.css("height", height + "px");
+    this.indexEle.css("height", height + 45 + "px");
+    var span = "";
+    for (var i = 0; i &lt; this.viewRowCount; i++) {
+      span += "&lt;span>&lt;/span>";
+    }
+    this.indexEle
+      .find("div.virture-index-wrapper")
+      .css("height", height + "px")
+      .empty()
+      .html(span);
+
+    this.refresh(false);
+  }
+
+  setWidth(width) {
+    if (Number.isInteger(width)) {
+      this.headerEle.css("width", width + "px");
+      this.scrollEle.css("width", width + "px");
+    } else {
+      this.headerEle.css("width", width);
+      this.scrollEle.css("width", width);
+    }
+  }
+
+  onWheel(e) {
+    e.preventDefault();
+    let direction = Math.sign(e.originalEvent.deltaY);
+    if (direction == 1) {
+      this.scrollEle.scrollTop(
+        this.scrollEle.scrollTop() + this.rowHeight * this.wheelIncrement
+      );
+    } else if (direction == -1) {
+      this.scrollEle.scrollTop(
+        this.scrollEle.scrollTop() - this.rowHeight * this.wheelIncrement
+      );
+    }
+  }
+
+  initContextMenu() {
+    var disabled = false;
+    if (this.config.contextMenu &amp;&amp; this.config.contextMenu.disabled) {
+      disabled = this.config.contextMenu.disabled;
+    }
+
+    var table = this;
+
+    try {
+      $.contextMenu("destroy", "#" + this.config.gridEle);
+      $.contextMenu({
+        selector: "#" + this.config.gridEle,
+        build: function ($triggerElement, e) {
+          return {
+            items: {
+              addRow: {
+                isHtmlName: true,
+                name: '행 추가&lt;span class="hot-key">(Ctrl + Enter)&lt;/span>',
+                icon: "fa-plus-circle",
+                callback: function (key, opt, e) {
+                  table.insertRow();
+                },
+                disabled: disabled,
+              },
+              addCopyRow: {
+                isHtmlName: true,
+                name: '선택 행 복사하여 추가&lt;span class="hot-key">(Alt + Enter)&lt;/span>',
+                icon: "fa-plus-square",
+                callback: function (key, opt, e) {
+                  table.insertCopiedRow();
+                },
+                disabled: disabled,
+              },
+              delRow: {
+                isHtmlName: true,
+                name: '행 삭제&lt;span class="hot-key">(Shift + Del)&lt;/span>',
+                icon: "delete",
+                callback: function (key, opt, e) {
+                  table.removeRow();
+                },
+                disabled: disabled,
+              },
+              sep1: "---------",
+              copyCell: {
+                isHtmlName: true,
+                name: '선택 셀 데이터 복사&lt;span class="hot-key">(Ctrl + C)&lt;/span>',
+                icon: "fa-copy",
+                callback: function (key, opt, e) {
+                  let ready = false;
+                  if (table.config.beforeCopy)
+                    ready = table.config.beforeCopy();
+
+                  if (!ready) {
+                    return;
+                  }
+
+                  table.selectedCopy();
+                },
+              },
+              cancelEdit: {
+                isHtmlName: true,
+                name: '실행 취소&lt;span class="hot-key">(Ctrl + Z)&lt;/span>',
+                icon: "fa-reply",
+                callback: function (key, opt, e) {
+                  table.undo();
+                },
+              },
+              //			                "pasteCell": {
+              //			                	isHtmlName: true,
+              //			            		name: '데이터 붙여넣기&lt;span class="hot-key">(Ctrl + V)&lt;/span>',
+              //			            		icon:"fa-clipboard",
+              //			            		callback: function(key, opt, e){
+              //			            			resultTable.button('3').trigger();
+              //			                	},
+              //			                },
+              sep2: "---------",
+              export: {
+                name: "내보내기",
+                icon: "fa-download",
+                items: {
+                  exportJson: {
+                    name: "JSON",
+                    //icon:"fa-faste",
+                    callback: function (key, opt, e) {
+                      let ready = false;
+                      if (table.config.beforeExport)
+                        ready = table.config.beforeExport(1, 0, "table");
+
+                      if (!ready) {
+                        return;
+                      }
+
+                      table.exportData(1, 0, "table");
+                    },
+                  },
+                  exportCsv: {
+                    name: "CSV",
+                    //icon:"fa-faste",
+                    callback: function (key, opt, e) {
+                      let ready = false;
+                      if (table.config.beforeExport)
+                        ready = table.config.beforeExport(1, 1, "table");
+
+                      if (!ready) {
+                        return;
+                      }
+
+                      table.exportData(1, 1, "table");
+                    },
+                  },
+                  exportExcel: {
+                    name: "Excel",
+                    //icon:"fa-faste",
+                    callback: function (key, opt, e) {
+                      let ready = false;
+                      if (table.config.beforeExport)
+                        ready = table.config.beforeExport(1, 2, "table");
+
+                      if (!ready) {
+                        return;
+                      }
+
+                      table.exportData(1, 2, "table");
+                    },
+                  },
+                  exportXml: {
+                    name: "XML",
+                    //icon:"fa-faste",
+                    callback: function (key, opt, e) {
+                      let ready = false;
+                      if (table.config.beforeExport)
+                        ready = table.config.beforeExport(1, 3, "table");
+
+                      if (!ready) {
+                        return;
+                      }
+
+                      table.exportData(1, 3, "table");
+                    },
+                  },
+                  exportTxt: {
+                    name: "TXT",
+                    //icon:"fa-faste",
+                    callback: function (key, opt, e) {
+                      let ready = false;
+                      if (table.config.beforeExport)
+                        ready = table.config.beforeExport(1, 4, "table");
+
+                      if (!ready) {
+                        return;
+                      }
+
+                      table.exportData(1, 4, "table");
+                    },
+                  },
+                },
+              },
+            },
+          };
+        },
+      });
+    } catch (e) {
+      console.error("### context menu lib load failed.");
+    }
+  }
+
+  getCursor() {
+    return this.gridEle.find("tr>td.cursor");
+  }
+
+  setCursor(rowIdx, colIdx) {
+    if (this.rows[rowIdx] != undefined) {
+      this.getCursor().removeClass("cursor");
+      if (!colIdx) {
+        this.cursorIndex = { row: rowIdx, col: this.cursorIndex.col };
+        return this.rows[rowIdx]
+          .children(":eq(" + (this.cursorIndex.col + 1) + ")")
+          .addClass("cursor");
+      } else {
+        this.cursorIndex = { row: rowIdx, col: colIdx };
+        return this.rows[rowIdx]
+          .children(":eq(" + (colIdx + 1) + ")")
+          .addClass("cursor");
+      }
+    }
+  }
+
+  onMouseEnterCell(e) {
+    if (!this.isDragCell) {
+      return;
+    }
+
+    this.dragEndIndex = $(e.originalEvent.target).data("index");
+
+    this.drawSelection();
+  }
+
+  exportData(isAll, type, name) {
+    var data;
+    if (isAll) {
+      data = this.getData();
+    } else {
+      data = [];
+      let valueArr = Array.from(this.selectedData.values());
+      valueArr.sort(
+        (a, b) => a.index.row - b.index.row || a.index.col - b.index.col
+      );
+
+      let prevRowIdx;
+      var rowData = {};
+      for (var i = 0, size = valueArr.length; i &lt; size; i++) {
+        if (prevRowIdx == undefined) {
+          prevRowIdx = valueArr[i].index.row;
+        }
+
+        if (prevRowIdx != valueArr[i].index.row) {
+          data.push(rowData);
+          rowData = {};
+        }
+
+        rowData[valueArr[i].column] = valueArr[i].value;
+
+        if (i == size - 1) {
+          data.push(rowData);
+        }
+      }
+    }
+
+    if (data.length &lt; 1) {
+      return;
+    }
+
+    if (name == "") {
+      name = "table";
+    }
+
+    //type [ 0:json, 1:csv, 2:excel, 3:xml, 4:txt ]
+    if (type == 0) {
+      this.objectToJson(data, name);
+    } else if (type == 1) {
+      this.objectToCsv(data, name);
+    } else if (type == 2) {
+      this.objectToExcel(data, name);
+    } else if (type == 3) {
+      this.objectToXml(data, name);
+    } else if (type == 4) {
+      this.objectToTxt(data, name);
+    }
+  }
+
+  objectToCsv(data, name) {
+    /* make the worksheet */
+    var ws = XLSX.utils.json_to_sheet(data);
+
+    /* add to workbook */
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, name);
+
+    /* write workbook (use type 'binary') */
+    var wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
+
+    saveAs(
+      new Blob([s2ab(wbout)], { type: "text/csv" }),
+      name + "_" + this.today() + ".csv"
+    );
+  }
+
+  objectToXml(data, name) {
+    var content =
+      '&lt;?xml version="1.0" encoding="UTF-8"?>&lt;' +
+      name +
+      ">" +
+      this.json2xml(data) +
+      "&lt;/" +
+      name +
+      ">";
+    saveAs(
+      new Blob([content], { type: "application/xml" }),
+      name + "_" + this.today() + ".xml"
+    );
+  }
+
+  objectToJson(data, name) {
+    var content = '{"' + name + '":' + JSON.stringify(data) + "}";
+    saveAs(
+      new Blob([content], { type: "application/json" }),
+      name + "_" + this.today() + ".json"
+    );
+  }
+
+  objectToTxt(data, name) {
+    saveAs(
+      new Blob([objectToText(data)], { type: "application/txt" }),
+      name + "_" + this.today() + ".txt"
+    );
+  }
+
+  objectToExcel(data, name) {
+    /* make the worksheet */
+    var ws = XLSX.utils.json_to_sheet(data);
+
+    /* add to workbook */
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, name);
+
+    /* write workbook (use type 'binary') */
+    var wbout = XLSX.write(wb, { bookType: "xlsx", type: "binary" });
+
+    saveAs(
+      new Blob([s2ab(wbout)], {
+        type: "application/octet-stream;charset=utf-8",
+      }),
+      name + "_" + this.today() + ".xlsx"
+    );
+  }
+
+  json2xml(o, tab) {
+    var toXml = function (v, name, ind) {
+        var xml = "";
+        if (v instanceof Array) {
+          for (var i = 0, n = v.length; i &lt; n; i++)
+            xml += ind + toXml(v[i], name, ind + "\t") + "\n";
+        } else if (typeof v == "object") {
+          var hasChild = false;
+          xml += ind + "&lt;row-" + name;
+          for (var m in v) {
+            if (m.charAt(0) == "@")
+              xml += " " + m.substr(1) + '="' + v[m].toString() + '"';
+            else hasChild = true;
+          }
+          xml += hasChild ? ">" : "/>";
+          if (hasChild) {
+            for (var m in v) {
+              if (m == "#text") xml += v[m];
+              else if (m == "#cdata") xml += "&lt;![CDATA[" + v[m] + "]]>";
+              else if (m.charAt(0) != "@") xml += toXml(v[m], m, ind + "\t");
+            }
+            xml +=
+              (xml.charAt(xml.length - 1) == "\n" ? ind : "") +
+              "&lt;/row-" +
+              name +
+              ">";
+          }
+        } else {
+          xml += ind + "&lt;" + name + ">" + v.toString() + "&lt;/" + name + ">";
+        }
+        return xml;
+      },
+      xml = "";
+    for (var m in o) xml += toXml(o[m], m, "");
+    return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, "");
+  }
+
+  currentTime() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    var hour = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+
+    if (dd &lt; 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm &lt; 10) {
+      mm = "0" + mm;
+    }
+
+    if (hour &lt; 10) {
+      hour = "0" + hour;
+    }
+
+    if (min &lt; 10) {
+      min = "0" + min;
+    }
+
+    if (sec &lt; 10) {
+      sec = "0" + sec;
+    }
+
+    today =
+      new String(yyyy) +
+      "-" +
+      new String(mm) +
+      "-" +
+      new String(dd) +
+      " " +
+      new String(hour) +
+      ":" +
+      new String(min) +
+      ":" +
+      new String(sec);
+    return today;
+  }
+
+  today() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    if (dd &lt; 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm &lt; 10) {
+      mm = "0" + mm;
+    }
+
+    today = new String(yyyy) + new String(mm) + new String(dd);
+
+    return today;
+  }
+
+  drawSelection() {
+    let rs = this.dragStartIndex.row;
+    let re = this.dragEndIndex.row;
+    let cs = this.dragStartIndex.col;
+    let ce = this.dragEndIndex.col;
+
+    let top, left, width, height;
+    let setRs, setRe, setCs, setCe;
+
+    if (re >= rs) {
+      //아래로 드래그
+      top = rs * this.rowHeight;
+      height = (re - rs) * this.rowHeight + this.rowHeight;
+
+      setRs = rs;
+      setRe = re;
+    } else {
+      //위로 드래그
+      top = re * this.rowHeight;
+      height = (rs - re) * this.rowHeight + this.rowHeight;
+
+      setRs = re;
+      setRe = rs;
+    }
+
+    if (ce >= cs) {
+      //우로 드래그
+      left = this.getElement(rs, cs).position().left;
+      width =
+        this.getHeader(ce).position().left -
+        this.getHeader(cs).position().left +
+        this.getHeader(ce).outerWidth();
+
+      setCs = cs;
+      setCe = ce;
+    } else {
+      //좌로 드래그
+      left =
+        this.scrollEle.scrollLeft() +
+        (Math.sign(this.getHeader(ce).position().left) &lt; 0
+          ? 50
+          : this.getHeader(ce).position().left);
+      width =
+        this.getHeader(cs).position().left -
+        this.getHeader(ce).position().left +
+        this.getHeader(cs).outerWidth();
+
+      setCs = ce;
+      setCe = cs;
+    }
+
+    for (var i = setRs; i &lt; setRe + 1; i++) {
+      for (var j = setCs; j &lt; setCe + 1; j++) {
+        let column = this.columns[j].COLUMN_NAME;
+        this.selectedData.set(i + "-" + j, {
+          column: column,
+          value: this.getData(i)[column],
+          index: { row: i, col: j },
+        });
+      }
+    }
+
+    this.resizeSelectionCell(top, left, width, height);
+  }
+
+  resizeSelectionCell(top, left, width, height) {
+    if (this.selectionCellEle == undefined) {
+      return;
+    }
+
+    this.selectionCellEle.css({
+      top: top + "px",
+      left: left + "px",
+      width: width + "px",
+      height: height + "px",
+    });
+  }
+
+  createSelectionCell(top, left, width, height) {
+    var element = this.scrollEle.children(
+      '.selection-cell[style="top: ' +
+        top +
+        "px; left: " +
+        left +
+        "px; width: " +
+        width +
+        "px; height: " +
+        height +
+        'px;"]'
+    );
+    if (element.length == 0) {
+      element = $('&lt;div class="selection-cell" />')
+        .css({
+          top: top + "px",
+          left: left + "px",
+          width: width + "px",
+          height: height + "px",
+        })
+        .appendTo(this.scrollEle);
+    }
+
+    return element;
+  }
+
+  pushUndo(action, indexes, data) {
+    let item = {};
+    item["action"] = action;
+    item["indexes"] = indexes;
+    item["data"] = data;
+
+    this.undoStatck.push(item);
+  }
+
+  onMouseDownCell(e) {
+    e.stopPropagation();
+    if (e.button == 2 || e.which == 3) {
+      return;
+    }
+
+    this.isDragCell = true;
+    var index =
+      e.originalEvent == undefined
+        ? $(e.target).data("index")
+        : $(e.originalEvent.target).data("index");
+    this.cursorIndex = { row: index.row, col: index.col };
+    var nextEl = this.setCursor(this.cursorIndex.row, this.cursorIndex.col);
+    if (nextEl == undefined) {
+      return;
+    }
+
+    if (!e.ctrlKey) {
+      this.selectedData.clear();
+      $(this.scrollEle).find("div.selection-cell").remove();
+
+      this.selectionCellEle = this.createSelectionCell(
+        nextEl.parent().position().top,
+        nextEl.position().left,
+        nextEl.outerWidth(),
+        nextEl.outerHeight()
+      );
+    } else {
+      this.selectionCellEle = this.createSelectionCell(
+        nextEl.parent().position().top,
+        nextEl.position().left,
+        nextEl.outerWidth(),
+        nextEl.outerHeight()
+      );
+    }
+
+    this.dragStartIndex = { row: index.row, col: index.col };
+
+    let column = this.columns[index.col].COLUMN_NAME;
+    this.selectedData.set(index.row + "-" + index.col, {
+      column: column,
+      value: this.getData(index.row)[column],
+      index: { row: index.row, col: index.col },
+    });
+  }
+
+  onMouseUpCell(e) {
+    e.stopPropagation();
+    this.isDragCell = false;
+
+    var index =
+      e.originalEvent == undefined
+        ? $(e.target).data("index")
+        : $(e.originalEvent.target).data("index");
+    this.cursorIndex = { row: index.row, col: index.col };
+    this.setCursor(this.cursorIndex.row, this.cursorIndex.col);
+  }
+
+  onKeyDownCell(e) {
+    if (e.keycode == 16 || e.keycode == 17) {
+      return;
+    }
+
+    //방향키
+    if (
+      e.keyCode == 33 ||
+      e.keyCode == 34 ||
+      e.keyCode == 37 ||
+      e.keyCode == 38 ||
+      e.keyCode == 39 ||
+      e.keyCode == 40
+    ) {
+      //스크롤 이벤트가 버블링되어 기존 이벤트는 막아줌
+      e.preventDefault();
+
+      if (e.keyCode == 33) {
+        let moveIdx = this.cursorIndex.row - this.viewRowCount;
+        this.cursorIndex.row = Math.sign(moveIdx) &lt; 0 ? 0 : moveIdx;
+
+        this.setCursor(this.cursorIndex.row, this.cursorIndex.col);
+        this.scrollEle.scrollTop(this.rowHeight * this.cursorIndex.row);
+      } else if (e.keyCode == 34) {
+        let moveIdx = this.cursorIndex.row + this.viewRowCount;
+
+        this.setCursor(moveIdx, this.cursorIndex.col);
+        this.scrollEle.scrollTop(this.rowHeight * this.cursorIndex.row);
+      } else if (e.keyCode == 40) {
+        // 아래
+        let lastIndex = this.length() - 1;
+        if (this.cursorIndex.row >= lastIndex) {
+          return;
+        }
+
+        if (e.ctrlKey) {
+          this.cursorIndex.row = lastIndex;
+          this.setCursor(lastIndex, this.cursorIndex.col);
+
+          this.scrollEle.scrollTop(
+            this.length() * this.rowHeight - this.viewHeight - 1
+          );
+        } else {
+          this.cursorIndex.row++;
+          this.setCursor(this.cursorIndex.row, this.cursorIndex.col);
+
+          if (
+            this.cursorIndex.row * this.rowHeight + this.rowHeight >=
+            this.viewHeight + this.scrollEle.scrollTop() + 8
+          ) {
+            this.scrollEle.scrollTop(
+              this.scrollEle.scrollTop() + this.rowHeight
+            );
+          }
+        }
+      } else if (e.keyCode == 38) {
+        // 위
+        if (this.cursorIndex.row == 0) {
+          return;
+        }
+
+        if (e.ctrlKey) {
+          this.cursorIndex.row = 0;
+          this.setCursor(0, this.cursorIndex.col);
+
+          this.scrollEle.scrollTop(0);
+        } else {
+          this.cursorIndex.row--;
+          this.setCursor(this.cursorIndex.row, this.cursorIndex.col);
+
+          if (
+            this.cursorIndex.row * this.rowHeight &lt;
+            this.scrollEle.scrollTop()
+          ) {
+            this.scrollEle.scrollTop(
+              this.scrollEle.scrollTop() - this.rowHeight
+            );
+          }
+        }
+      } else if (e.keyCode == 39) {
+        // 우
+        if (this.cursorIndex.col >= this.headerLength() - 1) {
+          return;
+        }
+
+        if (e.ctrlKey) {
+          this.cursorIndex.col = this.headerLength() - 1;
+          var nextEl = this.setCursor(
+            this.cursorIndex.row,
+            this.cursorIndex.col
+          );
+
+          this.scrollEle.scrollLeft(
+            nextEl.position().left + nextEl.outerWidth()
+          );
+        } else {
+          this.cursorIndex.col++;
+          var nextEl = this.setCursor(
+            this.cursorIndex.row,
+            this.cursorIndex.col
+          );
+
+          let positionX = nextEl.position().left + nextEl.outerWidth();
+          if (positionX > this.scrollEle.width()) {
+            this.scrollEle.scrollLeft(positionX - this.scrollEle.width() + 8);
+          }
+        }
+      } else if (e.keyCode == 37) {
+        // 좌
+        if (this.cursorIndex.col == 0) {
+          return;
+        }
+
+        if (e.ctrlKey) {
+          this.cursorIndex.col = 0;
+          var prevEl = this.setCursor(this.cursorIndex.row, 0);
+
+          this.scrollEle.scrollLeft(0);
+        } else {
+          this.cursorIndex.col--;
+          var prevEl = this.setCursor(
+            this.cursorIndex.row,
+            this.cursorIndex.col
+          );
+
+          if (prevEl.position().left &lt; this.scrollEle.scrollLeft()) {
+            this.scrollEle.scrollLeft(prevEl.position().left - 50);
+          }
+        }
+      }
+
+      if (!e.shiftKey) {
+        this.dragStartIndex = {
+          row: this.cursorIndex.row,
+          col: this.cursorIndex.col,
+        };
+        this.selectedData.clear();
+        let column = this.columns[this.cursorIndex.col].COLUMN_NAME;
+        this.selectedData.set(
+          this.cursorIndex.row + "-" + this.cursorIndex.col,
+          {
+            column: column,
+            value: this.getData(this.cursorIndex.row)[column],
+            index: { row: this.cursorIndex.row, col: this.cursorIndex.col },
+          }
+        );
+        $(this.scrollEle).find("div.selection-cell").remove();
+        this.selectionCellEle = this.createSelectionCell(0, 0, 0, 0);
+      } else {
+        this.dragEndIndex = {
+          row: this.cursorIndex.row,
+          col: this.cursorIndex.col,
+        };
+        this.drawSelection();
+      }
+    } else {
+      if (e.shiftKey) {
+        if (e.shiftKey &amp;&amp; e.keyCode == 46) {
+          //row 삭제
+          this.removeRow();
+          return;
+        }
+      } else if (e.ctrlKey) {
+        if (e.keyCode == 67) {
+          //선택 카피
+          let ready = false;
+          if (this.config.beforeCopy) ready = this.config.beforeCopy();
+
+          if (!ready) {
+            return;
+          }
+
+          this.selectedCopy();
+          return;
+        }
+
+        if (e.keyCode == 13) {
+          //row 추가
+          this.insertRow();
+          return;
+        }
+
+        if (e.keyCode == 90) {
+          //실행 취소
+          this.undo();
+          return;
+        }
+      } else if (e.altKey) {
+        if (e.keyCode == 13) {
+          //선택 카피
+          this.insertCopiedRow();
+          return;
+        }
+      } else {
+        //				if(e.keyCode == 113){	//cell 수정
+        this.editingCell();
+        return;
+        //				}
+      }
+    }
+  }
+
+  selectedCopy() {
+    console.log("copy");
+
+    if (this.selectedData.size == 0) {
+      return;
+    }
+
+    let valueArr = Array.from(this.selectedData.values());
+    valueArr.sort(
+      (a, b) => a.index.row - b.index.row || a.index.col - b.index.col
+    );
+
+    var copyContent = "";
+    let prevRowIdx;
+    for (var i = 0, size = valueArr.length; i &lt; size; i++) {
+      if (prevRowIdx == undefined) {
+        prevRowIdx = valueArr[i].index.row;
+      }
+
+      if (prevRowIdx != valueArr[i].index.row) {
+        copyContent = copyContent.substring(0, copyContent.lastIndexOf("\t"));
+        copyContent += "\n";
+      }
+
+      copyContent += valueArr[i].value + "\t";
+      prevRowIdx = valueArr[i].index.row;
+
+      if (i == size - 1) {
+        copyContent = copyContent.substring(0, copyContent.lastIndexOf("\t"));
+      }
+    }
+
+    var textArea = document.createElement("textarea");
+    textArea.value = copyContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+  }
+
+  insertCopiedRow(callback) {
+    console.log("insertCopiedRow");
+
+    let ready = false;
+    if (this.config.insert &amp;&amp; this.config.insert.ready)
+      ready = this.config.insert.ready();
+
+    if (!ready) {
+      return;
+    }
+
+    var columns = this.columns;
+    var objectArr = [];
+    var indexArr = [];
+
+    //로우 인덱스 값만 꺼내어 중복 제거한 배열
+    let rowIdxArr = Array.from(
+      new Set(Array.from(this.selectedData.values()).map((x) => x.index.row))
+    );
+    for (var i = 0, size = rowIdxArr.length; i &lt; size; i++) {
+      var object = {};
+      object["*-ui-action-*"] = "I";
+
+      for (var j = 0; j &lt; columns.length; j++) {
+        object[columns[j].COLUMN_NAME] = this.getData(
+          rowIdxArr[i],
+          columns[j].COLUMN_NAME
+        );
+      }
+
+      indexArr.push({ row: i });
+      objectArr.push(object);
+    }
+
+    this.data = [...objectArr, ...this.data];
+    this.pushUndo("I", indexArr, objectArr);
+    this.refresh();
+
+    if (callback) {
+      callback();
+    } else {
+      if (this.config.insert &amp;&amp; this.config.insert.callback)
+        this.config.insert.callback();
+    }
+  }
+
+  selectedPaste(e, callback) {
+    if (this.gridEle.is(":focus")) {
+      let ready = false;
+      if (this.config.update &amp;&amp; this.config.update.ready)
+        ready = this.config.update.ready();
+
+      if (!ready) {
+        return;
+      }
+
+      var pasteContent = e.clipboardData.getData("text/plain");
+      var splitData = [],
+        cellIdxArr = [],
+        undoDataArr = [];
+      var colCnt = 0;
+      var splitContent = pasteContent.split("\n");
+      var rowSize = splitContent.length;
+
+      if (rowSize &lt; 1) {
+        return;
+      }
+
+      if (splitContent[rowSize - 1] == "") {
+        splitContent.pop();
+        rowSize--;
+      }
+
+      for (var i = 0; i &lt; rowSize; i++) {
+        var rowData = splitContent[i].split("\t");
+        colCnt = rowData.length;
+        splitData.push(rowData);
+      }
+
+      for (var i = 0, size = splitData.length; i &lt; size; i++) {
+        var data = this.getData(this.cursorIndex.row + i);
+
+        for (var j = 0; j &lt; colCnt; j++) {
+          if (this.cursorIndex.col + j + 1 > this.headerLength()) {
+            continue;
+          }
+
+          var cellIdx = {
+            row: this.cursorIndex.row + i,
+            col: this.cursorIndex.col + j,
+          };
+          var column = this.getHeader(this.cursorIndex.col + j).data(
+            "data"
+          ).COLUMN_NAME;
+
+          var dataType = typeof data[column];
+          var value;
+          if (dataType == "number") {
+            if (isNaN(splitData[i][j])) {
+              value = 0;
+            } else {
+              value = Number(splitData[i][j]);
+            }
+          } else {
+            value = $.trim(splitData[i][j]);
+          }
+
+          var undoData = {};
+          undoData["column"] = column;
+          undoData["value"] = data[column];
+
+          if (data["*-ui-action-*"] != "I") {
+            if (!data.hasOwnProperty("*-origin-data-*")) {
+              data["*-origin-data-*"] = {};
+              undoData["isFirstUpdate"] = true;
+            }
+
+            data["*-ui-action-*"] = "U";
+            data["*-origin-data-*"][column] = data[column];
+          }
+
+          data[column] = value;
+
+          cellIdxArr.push(cellIdx);
+          undoDataArr.push(undoData);
+        }
+      }
+
+      this.pushUndo("U", cellIdxArr, undoDataArr);
+
+      this.refresh(false);
+      this.gridEle.focus();
+
+      if (callback) {
+        callback();
+      } else {
+        if (this.config.update &amp;&amp; this.config.update.callback)
+          this.config.update.callback();
+      }
+    }
+  }
+
+  getUndoSize() {
+    return this.undoStatck.length;
+  }
+
+  undo(callback) {
+    let ready = false;
+    if (this.config.undo.ready) ready = this.config.undo.ready();
+
+    if (!ready) {
+      return;
+    }
+
+    let undoSize = this.undoStatck.length;
+    if (undoSize &lt; 1) {
+      return;
+    }
+
+    var item = this.undoStatck[undoSize - 1];
+    var indexes = item.indexes;
+    if (item.action == "I") {
+      if (Array.isArray(indexes)) {
+        this.removeData(indexes[0].row, indexes.length);
+      } else {
+        this.removeData(indexes.row);
+      }
+    } else if (item.action == "U") {
+      if (Array.isArray(indexes)) {
+        var itemData = item.data;
+        for (var i = 0, size = indexes.length; i &lt; size; i++) {
+          var column = itemData[i].column;
+          var value = itemData[i].value;
+          var data = this.getData(indexes[i].row);
+          data[column] = value;
+
+          if (itemData[i].isFirstUpdate) {
+            delete data["*-ui-action-*"];
+            delete data["*-origin-data-*"];
+          }
+        }
+      } else {
+        var column = item.data.column;
+        var value = item.data.value;
+        var data = this.getData(indexes.row);
+        data[column] = value;
+
+        if (item.data.isFirstUpdate) {
+          delete data["*-ui-action-*"];
+          delete data["*-origin-data-*"];
+        }
+      }
+    } else if (item.action == "D") {
+      if (Array.isArray(indexes)) {
+        for (var i = 0, size = indexes.length; i &lt; size; i++) {
+          if (item.data[i] == null) {
+            let data = this.getData(indexes[i]);
+            if (data["*-origin-data-*"]) {
+              data["*-ui-action-*"] = "U";
+            } else {
+              delete this.getData(indexes[i])["*-ui-action-*"];
+            }
+          } else {
+            this.data.unshift(item.data[i]);
+          }
+        }
+      } else {
+        let data = this.getData(indexes.row);
+        if (data["*-origin-data-*"]) {
+          data["*-ui-action-*"] = "U";
+        } else {
+          delete this.getData(indexes.row)["*-ui-action-*"];
+        }
+      }
+    }
+
+    this.undoStatck.pop();
+    this.refresh(false);
+
+    if (callback) {
+      callback();
+    } else {
+      if (this.config.undo.callback) this.config.undo.callback();
+    }
+  }
+
+  getElement(rowIdx, colIdx) {
+    if (this.rows[rowIdx] != undefined) {
+      return this.rows[rowIdx].children(":eq(" + (colIdx + 1) + ")");
+    }
+  }
+
+  getHeader(colIdx) {
+    return $(
+      "#" +
+        this.config.scrollEle +
+        "_header.petra-grid-header>tr>th:eq(" +
+        colIdx +
+        ")"
+    );
+  }
+
+  headerLength() {
+    return this.headerEle.find("tr>th").length;
+  }
+
+  createEmptyEle() {
+    var html =
+      '&lt;div class="exclamation-icon">&lt;/div>&lt;div class="empty-text">조회 결과가 없습니다.&lt;/div>';
+    this.emptyEle = $('&lt;div class="empty-wrapper"/>')
+      .html(html)
+      .appendTo(this.scrollEle);
+  }
+
+  //parkew
+  createSearchEle() {
+    // var html = '&lt;input placeholder="Search...">&lt;i>&lt;/i>';
+    // this.searchEle = $('&lt;div class="petra-grid-search"/>')
+    //   .html(html)
+    //   .on("keydown", ">input", (e) => this.onKeydownSearch(e));
+    // this.scrollEle.before(this.searchEle);
+    $(".petra-grid-search").on("keydown", (e) => this.onKeydownSearch(e));
+  }
+
+  onKeydownSearch(e) {
+    if (e.keyCode == 13) {
+      var value = $.trim($(e.target).val());
+      var patterns = this.checkedGrid.getCheckedData();
+      if (this.isEmpty(patterns)) {
+        this.filteredData = this.data;
+      } else {
+        this.isFiltered = false;
+        this.filter(patterns);
+      }
+      this.filter(value);
+    }
+  }
+
+  createFilterPopup() {
+    var popup = $(
+      '&lt;div class="filter-wrapper" id="' +
+        this.config.scrollEle +
+        '_filterPopup"/>'
+    );
+    var children = '&lt;div class="filter-title">';
+    children += '	&lt;span class="filter-icon">&lt;/span>&lt;span>Fillter&lt;/span>';
+    children += "	&lt;i>&lt;/i>";
+    children += "&lt;/div>";
+    children += '&lt;div class="filter-box">';
+    children += '	&lt;input type="search" placeholder="Search...">';
+    children += "	&lt;i>&lt;/i>";
+    children += "&lt;/div>";
+    children += '&lt;div class="filter-list-wrapper">';
+    children += '	&lt;table class="filter-list">&lt;/table>';
+    children += "&lt;/div>";
+    children += '&lt;div class="filter-btns">';
+    children += '	&lt;button class="select-btn" type="button">&lt;/button>';
+    children +=
+      '	&lt;button class="execute-btn" type="button" style="float: right;">적용&lt;/button>';
+    children += "&lt;/div>";
+    children += "&lt;/div>";
+    popup.html(children).appendTo(this.scrollEle);
+
+    popup.off("click").on("click", (e) => e.stopPropagation());
+    popup
+      .find(".filter-box>input")
+      .off("keydown")
+      .on("keydown", (e) => this.onKeydownFilter(e));
+    popup
+      .find(".filter-title>i")
+      .off("click")
+      .on("click", (e) => this.onClickFilterClose(e));
+    popup
+      .find(".filter-btns>button.select-btn")
+      .off("click")
+      .on("click", (e) => this.onClickFilterSelect(e));
+    popup
+      .find(".filter-btns>button.execute-btn")
+      .off("click")
+      .on("click", (e) => this.onClickFilterExecute(e));
+
+    this.checkedGrid = new PetraFilterList({
+      scrollEle: this.config.scrollEle + "_filterPopup .filter-list-wrapper",
+      gridEle: this.config.scrollEle + "_filterPopup .filter-list",
+      width: 210,
+      rowHeight: 30,
+      viewHeight: 200,
+    });
+
+    $(this.scrollEle)
+      .off("click")
+      .on("click", () => this.hideFilterPopup());
+  }
+
+  createResizeBar() {
+    this.resizeBarEle = $('&lt;div class="resize-bar"/>').appendTo(this.headerEle);
+  }
+
+  onMousedownTh(e) {
+    if (!$(e.target).is("th")) {
+      return;
+    }
+    let x = e.offsetX;
+    let element = $(e.target).closest("th");
+    let posX = element.position().left;
+    if (x &lt; 5) {
+      this.resizeBarEle.css({
+        visibility: "visible",
+        left: posX + (e.clientX - element.offset().left) + "px",
+        height: this.headerEle.height() + this.scrollEle.height() + "px",
+      });
+      this.resizeColumnEle = element.prev();
+      this.resizeBarX = element.prev().position().left + 30;
+    } else if (x > element.outerWidth() - 5) {
+      this.resizeBarEle.css({
+        visibility: "visible",
+        left: posX + (e.clientX - element.offset().left) + "px",
+        height: this.headerEle.height() + this.scrollEle.height() + "px",
+      });
+      this.resizeColumnEle = element;
+      this.resizeBarX = posX + 30;
+    }
+  }
+
+  onMouseupTh(e) {
+    e.preventDefault;
+    if (this.resizeBarEle.css("visibility") == "visible") {
+      let width =
+        this.resizeBarEle.position().left -
+        this.resizeColumnEle.position().left;
+      let oldWidth = this.resizeColumnEle.outerWidth();
+      this.resizeBarEle.css({ visibility: "hidden" });
+      this.resizeColumnEle.css("width", width + "px").data("data")[
+        "COLUMN_WIDTH"
+      ] = width;
+      this.totalWidth = this.totalWidth + (width - oldWidth);
+      this.resizeColumnEle.parent().css("width", this.totalWidth + "px");
+      this.refresh(false);
+    }
+  }
+
+  onMousemoveTh(e) {
+    let x = e.offsetX;
+    let element = $(e.target).closest("th, td");
+
+    if (element.length == 0) {
+      if (this.resizeColumnEle == null) {
+        return;
+      } else {
+        element = this.resizeColumnEle;
+      }
+    }
+
+    let posX = element.position().left;
+
+    if (element.is("th")) {
+      if (x &lt; 5) {
+        element.css("cursor", "col-resize");
+      } else if (x > element.outerWidth() - 5) {
+        element.css("cursor", "col-resize");
+      } else {
+        element.css("cursor", "");
+      }
+    }
+
+    if (this.resizeBarEle.css("visibility") == "visible") {
+      let moveX = posX + (e.clientX - element.offset().left);
+
+      if (moveX > this.resizeBarX) {
+        this.moveDivider(moveX);
+      }
+    }
+  }
+
+  moveDivider(x) {
+    this.resizeBarEle.css({
+      left: x + "px",
+    });
+  }
+
+  hideFilterPopup() {
+    var filterPopup = $(
+      ".filter-wrapper#" + this.config.scrollEle + "_filterPopup"
+    );
+    if (filterPopup.hasClass("show")) {
+      filterPopup.removeClass("show");
+    }
+  }
+
+  createHeader() {
+    if (this.config.headerEle != "") {
+      this.headerEle = $(`#${this.config.headerEle}`);
+      this.headerEle.empty();
+    } else {
+      if (this.headerEle === null) {
+        this.headerEle = $(
+          `&lt;div class="petraGrid_scrollHead" id="${this.config.scrollEle}_header"/>`
+        );
+        this.headerEle.empty();
+      } else {
+        this.headerEle.empty();
+      }
+    }
+
+    this.createIndexColumn(this.headerEle);
+    this.createResizeBar();
+
+    this.headerEle
+      .off("selectstart", "th")
+      .on("selectstart", "th", (e) => false);
+    this.headerEle
+      .off("mousedown", "tr")
+      .on("mousedown", "tr", (e) => this.onMousedownTh(e));
+    this.headerEle.off("mouseup").on("mouseup", (e) => this.onMouseupTh(e));
+    this.headerEle
+      .off("mousemove", "tr")
+      .on("mousemove", "tr", (e) => this.onMousemoveTh(e));
+    this.headerEle.off("click").on("click", () => this.hideFilterPopup());
+    this.headerEle
+      .off("click", "th > span.filter-icon")
+      .on("click", "th > span.filter-icon", (e) => this.onClickFilter(e));
+    this.headerEle
+      .off("click", "th")
+      .on("click", "th", (e) => this.onClickSort(e));
+    this.headerEle.addClass("petra-grid-header").css({
+      width: this.config.width ? `${this.config.width}px` : "100%",
+    });
+
+    $(this.scrollEle).before(this.headerEle);
+
+    let tr = $("&lt;tr/>").appendTo(this.headerEle);
+    let bodyThead = $(`&lt;thead/>`).appendTo(this.gridEle);
+    let bodyTr = $(`&lt;tr/>`).appendTo(bodyThead);
+    bodyTr.css("height", "0px");
+
+    // index column의 넓이를 더해준다.
+    this.totalWidth = 0;
+
+    for (let i = 0; i &lt; this.columns.length; i++) {
+      let data = this.columns[i];
+      let columnType = data.COLUMN_TYPE ? data.COLUMN_TYPE.toLowerCase() : "";
+      if (columnType === "tid" || columnType === "rowid") {
+        continue;
+      }
+
+      this.columns[i].class = this.columns[i].class
+        ? this.columns[i].class
+        : "";
+      this.columns[i].COLUMN_TYPE = columnType;
+      let columnWidth = 60;
+
+      if (data.COLUMN_WIDTH !== undefined) {
+        columnWidth = data.COLUMN_WIDTH;
+      } else {
+        columnWidth = this.getColumnWidth(columnType, data);
+      }
+
+      this.totalWidth += columnWidth;
+
+      let alias = data.COLUMN_NAME;
+      if (data.ALIAS !== undefined) {
+        alias = data.ALIAS;
+      }
+
+      $(
+        `&lt;th data-column-index="${i}" class="sorting ${
+          i === 0 ? "" : ""
+        }" title="${
+          alias + (columnType === "" ? "" : "(" + columnType + ")")
+        }" rowspan="1" colspan="1" />`
+      )
+        .css("width", `${columnWidth}px`)
+        .html(alias)
+        .data("data", data)
+        .appendTo(tr);
+
+      $(
+        `&lt;th data-column-index="${i}" class="sorting" title="${
+          alias + (columnType === "" ? "" : "(" + columnType + ")")
+        }" rowspan="1" colspan="1" />`
+      )
+        .css("width", `${columnWidth}px`)
+        .html(`&lt;div style="height: 0px; overflow: hidden;">${alias}&lt;/div>`)
+        .css("padding-top", "0px")
+        .css("padding-bottom", "0px")
+        .css("border-top-width", "0px")
+        .css("border-bottom-width", "0px")
+        .css("height", "0px")
+        .data("data", data)
+        .appendTo(bodyTr);
+
+      this.columns[i].COLUMN_WIDTH = columnWidth;
+      this.columns[i].SORT_TYPE = this.getSortType(columnType);
+    }
+
+    tr.css({
+      display: "flex",
+      width:
+        this.totalWidth &lt; this.scrollEle.innerWidth()
+          ? `100%`
+          : `${this.totalWidth}px`,
+
+      // tr.css({
+      //   display: "flex",
+      //   width: `${this.totalWidth}px`,
+      //   // margin: "unset",
+    });
+
+    tr.wrap(
+      `&lt;div class="petraGrid_scrollHeadInner">&lt;table class="table petraGrid">&lt;thead>&lt;/thead>&lt;/table>&lt;/div>`
+    );
+  }
+
+  createIndexColumn(header) {
+    this.indexEle = $(
+      '&lt;div class="index-column-wrapper" style="display: none">&lt;div class="clear-filter-wrapper">&lt;span class="clear-filter-icon" title="전체 필터 해제">&lt;/span>&lt;/div>&lt;div class="virture-index-wrapper">&lt;/div>&lt;/div>'
+    )
+      .css({
+        height: this.viewHeight + 45 + "px",
+      })
+      .appendTo(header);
+
+    var span = "";
+    for (var i = 0; i &lt; this.viewRowCount; i++) {
+      span += "&lt;span>&lt;/span>";
+    }
+
+    this.indexEle
+      .find("div.virture-index-wrapper")
+      .css({
+        height: this.viewHeight + "px",
+      })
+      .html(span);
+
+    this.indexEle
+      .find("span.clear-filter-icon")
+      .off("click")
+      .on("click", () => this.onClickFilterClear());
+  }
+
+  initViewConfig() {
+    this.viewHeight = this.config.viewHeight;
+    this.scrollEle
+      .addClass("petra-grid-wrapper")
+      .css({
+        height: this.viewHeight + "px",
+        width: this.config.width ? this.config.width + "px" : "100%",
+      })
+      .data("this", this);
+
+    this.viewRowCount = Math.ceil(this.viewHeight / this.config.rowHeight);
+  }
+
+  initScrollConfig() {
+    console.log("initScrollConfig");
+    let totalHeight = 0;
+    totalHeight = this.config.rowHeight * this.length();
+
+    this.gridEle
+      .addClass("petra-grid-content no-drag")
+      .attr("tabindex", 0)
+      .css({
+        width: this.totalWidth + "px",
+        height: totalHeight + "px",
+      });
+    //		this.virtureHeight = totalHeight;
+    this.scrollHeight = totalHeight;
+    //		this.pageHeight = totalHeight / 100;
+    //		this.pageCount = Math.ceil(this.virtureHeight / this.pageHeight);
+    //		this.skipCoefficient = (this.virtureHeight - this.scrollHeight) / (this.pageCount - 1);
+    //		this.pageOffset = 0;
+  }
+
+  setData(data, columns) {
+    this.data = data;
+
+    if (columns != undefined) {
+      this.columns = columns;
+    }
+
+    this.createHeader();
+
+    this.undoStatck = [];
+    this.cursorIndex = { row: 0, col: 0 };
+
+    //refresh 포함
+    this.onClickFilterClear();
+    console.log("### data length " + data.length);
+    return this;
+  }
+
+  clear() {
+    this.data = [];
+
+    this.undoStatck = [];
+    this.cursorIndex = { row: 0, col: 0 };
+
+    //refresh 포함
+    this.onClickFilterClear();
+    console.log("### clear ");
+    return this;
+  }
+
+  /**
+   * 데이터 가져오기
+   * @param {number} row index
+   * @param {string} column text
+   * @returns {array} or {object} rowIdx가 없으면 전체 리스트, 있으면 해당 로우 object, colIdx까지 있으면 해당 컬럼의 값
+   */
+  getData(rowIdx, column) {
+    if (this.isFiltered) {
+      if (rowIdx == undefined) {
+        return this.filteredData;
+      }
+
+      if (column == undefined) {
+        return this.filteredData[rowIdx];
+      } else {
+        return this.filteredData[rowIdx][column];
+      }
+    } else {
+      if (rowIdx == undefined) {
+        return this.data;
+      }
+
+      if (column == undefined) {
+        return this.data[rowIdx];
+      } else {
+        return this.data[rowIdx][column];
+      }
+    }
+  }
+
+  length() {
+    if (this.isFiltered) {
+      return this.filteredData.length;
+    } else {
+      return this.data.length;
+    }
+  }
+
+  getInsertData() {
+    if (this.isFiltered) {
+      return this.filteredData.filter((row) => {
+        return row["*-ui-action-*"] == "I" ? true : false;
+      });
+    } else {
+      return this.data.filter((row) => {
+        return row["*-ui-action-*"] == "I" ? true : false;
+      });
+    }
+  }
+
+  getUpdateData() {
+    if (this.isFiltered) {
+      return this.filteredData.filter((row) => {
+        return row["*-ui-action-*"] == "U" ? true : false;
+      });
+    } else {
+      return this.data.filter((row) => {
+        return row["*-ui-action-*"] == "U" ? true : false;
+      });
+    }
+  }
+
+  getDeleteData() {
+    if (this.isFiltered) {
+      return this.filteredData.filter((row) => {
+        return row["*-ui-action-*"] == "D" ? true : false;
+      });
+    } else {
+      return this.data.filter((row) => {
+        return row["*-ui-action-*"] == "D" ? true : false;
+      });
+    }
+  }
+
+  removeData(rowIdx, delCnt) {
+    if (delCnt == undefined) {
+      this.data.splice(rowIdx, 1);
+    } else {
+      this.data.splice(rowIdx, delCnt);
+    }
+  }
+
+  /**
+   * 정렬
+   * @param {number} 0(숫자) / 1(글자) / 2(날짜)
+   * @param {number} 0(오름차순) / 1(내림차순)
+   * @param {string} 정렬할 컬럼명
+   * @returns {boolean} 성공 여부
+   */
+  sort(type, direction, column) {
+    if (this.sortColumns.length > 0) {
+      this.sortColumns = this.sortColumns.filter(function (d) {
+        if (d.column == column) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+    }
+
+    this.sortColumns.push({ column: column, direction: direction, type: type });
+
+    if (this.isFiltered) {
+      this.filteredData = this.filteredData.sort(this.createSortF());
+    } else {
+      this.data = this.data.sort(this.createSortF());
+    }
+
+    this.refresh(false);
+    this.reTipped();
+  }
+
+  createSortF() {
+    var prevF = {};
+    var prevColumn;
+    var sortColumns = this.sortColumns;
+    for (var i = 0, size = sortColumns.length; i &lt; size; i++) {
+      let type = sortColumns[i].type;
+      let direction = sortColumns[i].direction;
+      let column = sortColumns[i].column;
+      let f = this.getCompareF(type, direction, column);
+
+      if (i == 0) {
+        if (i == size - 1) {
+          return f;
+        } else {
+          prevF[column] = f;
+          prevColumn = column;
+        }
+      } else {
+        let newF = prevF[prevColumn];
+        let returnF = function (a, b) {
+          return newF(a, b) || f(a, b);
+        };
+
+        if (i == size - 1) {
+          return returnF;
+        } else {
+          prevF[column] = returnF;
+          prevColumn = column;
+        }
+      }
+    }
+
+    return returnF;
+  }
+
+  getCompareF(type, direction, column) {
+    var f;
+    if (type == 0) {
+      if (direction == 0) {
+        f = function (a, b) {
+          return a[column] - b[column];
+        };
+      } else {
+        f = function (a, b) {
+          return b[column] - a[column];
+        };
+      }
+    } else if (type == 1) {
+      if (direction == 0) {
+        f = function (a, b) {
+          var x = a[column];
+          var y = b[column];
+          return x &lt; y ? -1 : x > y ? 1 : 0;
+        };
+      } else {
+        f = function (a, b) {
+          var x = a[column];
+          var y = b[column];
+          return y &lt; x ? -1 : y > x ? 1 : 0;
+        };
+      }
+    } else if (type == 2) {
+      if (direction == 0) {
+        f = function (a, b) {
+          var x = a[column];
+          var y = b[column];
+          return x &lt; y ? -1 : x > y ? 1 : 0;
+        };
+      } else {
+        f = function (a, b) {
+          var x = a[column];
+          var y = b[column];
+          return y &lt; x ? -1 : y > x ? 1 : 0;
+        };
+      }
+    }
+
+    return f;
+  }
+
+  /**
+   * 새로고침
+   * * @param {boolean} 스크롤 맨 위로 올릴지 여부
+   */
+  refresh(isScrollTop) {
+    console.log("### refresh");
+
+    this.removeAllRows();
+    $(this.scrollEle).find("div.selection-cell").remove();
+
+    if (this.length() &lt; 1) {
+      this.emptyEle.css("width", this.headerEle.find("tr").width() - 50 + "px");
+      this.emptyEle.show();
+    } else {
+      this.emptyEle.hide();
+    }
+
+    this.initScrollConfig();
+    this.scrollEle.trigger("scroll");
+    if (isScrollTop == undefined || isScrollTop) {
+      this.scrollEle.scrollTop(0);
+      this.scrollEle.scrollLeft(0);
+    }
+  }
+
+  reTipped(e) {
+    setTimeout(function () {
+      Tipped.create("table.petraGrid tbody tr td", "&lt;div>Loading...&lt;/div>", {
+        // hideOn: "click",
+        // showOn: "click",
+        radius: true,
+        showDelay: 750,
+        onShow: function (content, element) {
+          let value = $(element).data("value");
+          var html = `&lt;textarea wrap="off" class="tippedTextArea">${value}&lt;/textarea>`;
+          $(content).html(html);
+          Tipped.refresh(element);
+        },
+        // padding: 0,
+      });
+    }, 1000);
+  }
+
+  onScroll(e) {
+    const currX = this.scrollEle.scrollLeft();
+    const x =
+      currX > this.lastX ? "right" : currX === this.lastX ? "upDown" : "left";
+    this.lastX = currX;
+
+    if (x == "upDown") {
+      var scrollTop = this.scrollEle.scrollTop();
+
+      if (Math.abs(scrollTop - this.prevScrollTop) > this.viewHeight) {
+        this.skipScroll(scrollTop);
+      } else {
+        this.stepScroll(scrollTop);
+      }
+
+      if (!this.isFiltered) {
+        if (this.config.scrollMore &amp;&amp; !this.config.scrollMore.disabled) {
+          let h = this.scrollHeight - this.viewHeight;
+          if (Math.sign(h) > -1 &amp;&amp; scrollTop >= h) {
+            this.config.scrollMore.callback();
+          }
+        }
+      }
+
+      this.drawGrid(scrollTop);
+    } else {
+      $("#" + this.config.scrollEle + "_header").scrollLeft(currX);
+    }
+  }
+
+  onClickSort(e) {
+    var icon = $(e.currentTarget);
+    //    var data = icon.parent().data("data");
+    var data = $($(icon)[0]).data("data");
+    console.log(data);
+    var sortType = data.SORT_TYPE;
+    console.log("sortType", sortType);
+    //this.headerEle.find('tr>th>span.show').removeClass('show')
+
+    if (icon.hasClass("sorting_asc")) {
+      // asc -> desc
+      icon.removeClass("sorting_asc").addClass("sorting_desc");
+      this.sort(sortType, 1, data.COLUMN_NAME);
+    } else if (icon.hasClass("sorting_desc")) {
+      // desc -> none
+      icon.removeClass("sorting_desc");
+      var sortColumns = this.sortColumns;
+      this.sortColumns.some(function (item, index) {
+        if (item.column == data.COLUMN_NAME) {
+          sortColumns.splice(index, 1);
+          return;
+        }
+      });
+    } else {
+      // none-> asc
+      icon.addClass("sorting_asc");
+      this.sort(sortType, 0, data.COLUMN_NAME);
+    }
+  }
+
+  onClickFilter(e) {
+    e.stopPropagation();
+    var filterPopup = $(
+      ".filter-wrapper#" + this.config.scrollEle + "_filterPopup"
+    );
+    var th = $(e.currentTarget).parent();
+    var data = th.data("data");
+    data["SEQ"] = th.index();
+    var pos = th.offset();
+    let left = pos.left;
+    let limitPos = this.scrollEle.offset().left + this.scrollEle.outerWidth();
+
+    if (th.offset().left + filterPopup.outerWidth() >= limitPos) {
+      left = limitPos - filterPopup.outerWidth();
+    }
+
+    filterPopup
+      .css({
+        top: pos.top + 45,
+        left: left,
+      })
+      .addClass("show")
+      .data("data", data);
+
+    this.initFilterData(filterPopup, data);
+  }
+
+  onClickFilterClear() {
+    this.checkedGrid.clear();
+    this.filteredData = [];
+    this.isFiltered = false;
+    if (this.config.search) $(".petra-grid-search").val(""); //this.searchEle.children("input").val("");
+    this.headerEle
+      .find(".clear-filter-wrapper>.clear-filter-icon")
+      .removeClass("show");
+    this.headerEle.find("tr>th>.filter-icon").removeClass("show");
+    this.refresh();
+
+    if (this.config.filter &amp;&amp; this.config.filter.clearCallback) {
+      this.config.filter.clearCallback();
+    }
+  }
+
+  initFilterData(popup, columnData) {
+    popup.find(".filter-box>input").val("");
+    popup.find(".filter-btns>.select-btn").removeClass("deselect");
+    let column = columnData.COLUMN_NAME;
+    let sortType = columnData.SORT_TYPE;
+    //		var data;
+    //		if(this.isFiltered){
+    //			data = this.filteredData;
+    //		}else{
+    //			data = this.data;
+    //		}
+
+    // 중복 제거에 set가장빠르다는 실험결과 나옴
+    this.deduplicationData = Array.from(
+      new Set(
+        this.data.map((x) => {
+          let none;
+          if (sortType == 0) {
+            none = 0;
+          } else {
+            none = "";
+          }
+
+          return x[column] ? x[column] : none;
+        })
+      )
+    ).map(String);
+    //		this.deduplicationData = this.deduplicationData.filter(function(item) {
+    //			  return item != '';
+    //		});
+
+    let sortF;
+    if (sortType == 0) {
+      sortF = function (a, b) {
+        // 오름차순
+        return a - b;
+      };
+    } else {
+      sortF = function (a, b) {
+        // 오름차순
+        return a &lt; b ? -1 : a > b ? 1 : 0;
+      };
+    }
+
+    this.checkedGrid.setData(this.deduplicationData.sort(sortF));
+  }
+
+  onKeydownFilter(e) {
+    if (e.keyCode == 13) {
+      this.searchItem($(e.currentTarget).val());
+    }
+  }
+
+  searchItem(str) {
+    let data = this.deduplicationData;
+    var filtered = data.filter((d) => {
+      return d.indexOf(str) > -1 ? true : false;
+    });
+    this.checkedGrid.setData(filtered);
+  }
+
+  onClickFilterExecute(e) {
+    var data = $(
+      ".filter-wrapper#" + this.config.scrollEle + "_filterPopup"
+    ).data("data");
+    var icon = this.getHeader(data.SEQ).children(".filter-icon");
+    var patterns = this.checkedGrid.getCheckedData();
+
+    if (!this.isEmpty(patterns) &amp;&amp; patterns.hasOwnProperty(data.COLUMN_NAME)) {
+      icon.addClass("show");
+    } else {
+      icon.removeClass("show");
+    }
+
+    this.isFiltered = false;
+    this.filter(patterns);
+    this.onClickFilterClose(e);
+  }
+
+  onClickFilterSelect(e) {
+    var button = $(e.currentTarget);
+    var column = this.checkedGrid.scrollEle
+      .closest(".filter-wrapper")
+      .data("data").COLUMN_NAME;
+    if (button.hasClass("deselect")) {
+      delete this.checkedGrid.checkedData[column];
+      button.removeClass("deselect");
+    } else {
+      this.checkedGrid.checkedData[column] = this.checkedGrid.data.map(String);
+      button.addClass("deselect");
+    }
+
+    this.checkedGrid.refresh();
+  }
+
+  isEmpty(object) {
+    return Object.keys(object).length === 0;
+  }
+
+  //parkew
+  filter(patterns) {
+    if (this.isEmpty(patterns)) {
+      if (this.isFiltered) {
+        if (patterns == "") {
+          this.isFiltered = false;
+          var patterns = this.checkedGrid.getCheckedData();
+          this.filter(patterns);
+        } else {
+          this.onClickFilterClear();
+        }
+      } else {
+        this.onClickFilterClear();
+      }
+      return;
+    }
+
+    var keySet = Object.getOwnPropertyNames(patterns);
+    if (typeof patterns == "object") {
+      //여러개 해당 컬럼만 검색
+      for (var i = 0, size = keySet.length; i &lt; size; i++) {
+        if (i == 0) {
+          if (this.isFiltered) {
+            this.filteredData = this.filteredData.filter((row) => {
+              return this.includesArray(
+                row[keySet[i]] + "",
+                patterns[keySet[i]]
+              );
+            });
+          } else {
+            this.filteredData = this.data.filter((row) => {
+              return this.includesArray(
+                row[keySet[i]] + "",
+                patterns[keySet[i]]
+              );
+            });
+          }
+        } else {
+          this.filteredData = this.filteredData.filter((row) => {
+            return this.includesArray(row[keySet[i]] + "", patterns[keySet[i]]);
+          });
+        }
+      }
+    } else {
+      //단일 전체 검색 shit
+      keySet = this.columns.map((d) => d.COLUMN_NAME);
+      this.getSortType;
+      if (this.isFiltered) {
+        this.filteredData = this.filteredData.filter((row) => {
+          var value = 0;
+          keySet.forEach(function (column) {
+            //indexOf를 바꿔야함
+            // if(row[column]){
+            //   value = value + 1
+            // }else{
+            //   value = value + 0;
+            // }
+            value = value + ((row[column] + "").indexOf(patterns) > -1) ? 1 : 0;
+            // if (chocho.indexOf(patterns) > -1) {
+            //   value = value + this.testChar(row[column], patterns);
+            // } else {
+            //   value =
+            //     value + ((row[column] + "").indexOf(patterns) > -1) ? 1 : 0;
+            // }
+          });
+          return value;
+        });
+      } else {
+        this.filteredData = this.data.filter((row) => {
+          var value = 0;
+          keySet.forEach(function (column) {
+            value = value + ((row[column] + "").indexOf(patterns) > -1) ? 1 : 0;
+            // if (chocho.indexOf(patterns) > -1) {
+            //   value = value + this.testChar(row[column], patterns);
+            // } else {
+            //   value =
+            //     value + ((row[column] + "").indexOf(patterns) > -1) ? 1 : 0;
+            // }
+          });
+          return value;
+        });
+      }
+    }
+
+    this.isFiltered = true;
+    this.headerEle
+      .find(".clear-filter-wrapper>.clear-filter-icon")
+      .addClass("show");
+
+    this.refresh();
+
+    if (this.config.filter &amp;&amp; this.config.filter.callback) {
+      this.config.filter.callback(this);
+    }
+  }
+
+  includesArray(target, array) {
+    var value = 0;
+    array.forEach(function (word) {
+      value = value + (target == word ? 1 : 0);
+    });
+
+    return value === 1;
+  }
+
+  onClickFilterClose(e) {
+    $(e.currentTarget).closest(".filter-wrapper").removeClass("show");
+    if (this.isFiltered) {
+      this.headerEle
+        .find(".clear-filter-wrapper>.clear-filter-icon")
+        .addClass("show");
+    } else {
+      this.headerEle
+        .find(".clear-filter-wrapper>.clear-filter-icon")
+        .removeClass("show");
+    }
+  }
+
+  /**
+   * 정렬 타입(js에서 사용하는 데이터 타입이라 봐도 무방)
+   * @param {string} db에서 리턴되어진 column type
+   * @returns 0(숫자) / 1(문자) / 2(날짜)
+   */
+  getSortType(columnType) {
+    if (columnType.includes("date") || columnType.includes("timestamp")) {
+      return 2;
+    } else if (
+      columnType.includes("int") ||
+      columnType.includes("long") ||
+      columnType.includes("float") ||
+      columnType.includes("number")
+    ) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
+  getColumnWidth(columnType, data) {
+    if (columnType == "") {
+      return 100;
+    }
+
+    var width;
+    if (columnType == "date" || columnType == "timestamp") {
+      width = 130;
+    } else if (
+      columnType == "varchar" ||
+      columnType == "nvarchar" ||
+      columnType == "char"
+    ) {
+      if (data.COLUMN_SIZE &lt;= 150) {
+        width = 100;
+      } else if (data.COLUMN_SIZE > 150 &amp;&amp; data.COLUMN_SIZE &lt;= 300) {
+        width = 130;
+      } else {
+        width = 160;
+      }
+    } else if (columnType == "text") {
+      width = 200;
+    } else {
+      width = this.calcTextWidth(data.COLUMN_NAME) + 50;
+    }
+
+    return width;
+  }
+
+  calcTextWidth(text) {
+    var textComp = document.createElement("span");
+    document.body.appendChild(textComp);
+
+    textComp.style.font = "times new roman";
+    textComp.style.fontSize = this.config.fontSize + "px";
+    textComp.style.position = "absolute";
+    textComp.innerHTML = text;
+    var width = Math.ceil(textComp.clientWidth);
+    document.body.removeChild(textComp);
+    if (width &lt; 50) {
+      width = 50;
+    }
+    return width;
+  }
+
+  stepScroll(scrollTop) {
+    //	    if (scrollTop + this.pageOffset > (this.page+1)*this.pageHeight) {	// next
+    //																			// page
+    //	    	this.page++;
+    //	    	this.pageOffset = Math.round(this.page * this.skipCoefficient);
+    //	        this.scrollEle.scrollTop(this.prevScrollTop = scrollTop - this.skipCoefficient);
+    //	        this.removeAllRows();
+    //	    }else if (scrollTop + this.pageOffset &lt; this.page*this.pageHeight) {	// prev
+    //																				// page
+    //	    	this.page--;
+    //	    	this.pageOffset = Math.round(this.page * this.skipCoefficient);
+    //	        this.scrollEle.scrollTop(this.prevScrollTop = scrollTop + this.skipCoefficient);
+    //	        this.removeAllRows();
+    //	    }else{
+    this.prevScrollTop = scrollTop;
+    //	    }
+  }
+
+  skipScroll(scrollTop) {
+    //	    this.page = Math.floor(scrollTop * ((this.virtureHeight-this.viewHeight) / (this.scrollHeight-this.viewHeight)) * (1/this.pageHeight));
+    //	    this.pageOffset = Math.round(this.page * this.skipCoefficient);
+    this.prevScrollTop = scrollTop;
+
+    this.removeAllRows();
+  }
+
+  removeAllRows() {
+    for (var i in this.rows) {
+      this.rows[i].remove();
+      delete this.rows[i];
+    }
+  }
+
+  drawGrid(scrollTop) {
+    var y = scrollTop;
+    var buffer = this.rowHeight * this.bufferRowCount;
+    var top = Math.max(0, Math.floor((y - buffer) / this.rowHeight));
+    var bottom = Math.min(
+      this.scrollHeight / this.rowHeight,
+      Math.ceil((y + this.viewHeight + buffer) / this.rowHeight)
+    );
+
+    if (this.indexEle != null) {
+      this.indexEle
+        .find("div.virture-index-wrapper")
+        .css("top", -(y % 30) + "px");
+    }
+
+    for (var i in this.rows) {
+      if (i &lt; top || i > bottom) {
+        this.rows[i].remove();
+        delete this.rows[i];
+      }
+    }
+
+    var rowsData = this.getData();
+
+    for (var i = top; i &lt; bottom; i++) {
+      if (!this.rows[i]) {
+        if (rowsData[i] == undefined) {
+          continue;
+        }
+
+        this.rows[i] = this.renderRow(i, rowsData[i]);
+      }
+    }
+
+    let showNum = Math.floor(scrollTop / this.rowHeight);
+    // var numEle = this.indexEle.find("div.virture-index-wrapper>span");
+
+    // var viewSize = rowsData.length;
+    // for (var i = 0; i &lt; numEle.length; i++) {
+    //   if (i &lt; viewSize) {
+    //     let data = rowsData[showNum];
+    //     if (data == undefined) {
+    //       continue;
+    //     }
+    //     showNum++;
+    //     if (data.hasOwnProperty("*-ui-action-*")) {
+    //       let action = data["*-ui-action-*"];
+    //       numEle[i].innerText = action;
+    //       $(numEle[i]).removeClass();
+    //       if (action == "I") {
+    //         $(numEle[i]).addClass("insert-row");
+    //       } else if (action == "U") {
+    //         $(numEle[i]).addClass("update-row");
+    //       } else {
+    //         $(numEle[i]).addClass("delete-row");
+    //       }
+    //     } else {
+    //       numEle[i].innerText = showNum;
+    //       $(numEle[i]).removeClass();
+    //     }
+    //   } else {
+    //     numEle[i].innerText = "";
+    //     $(numEle[i]).removeClass();
+    //   }
+    // }
+  }
+
+  renderRow(rowIdx, data) {
+    var addClass = "";
+    var action = "";
+    if (data.hasOwnProperty("*-ui-action-*")) {
+      action = data["*-ui-action-*"];
+      if (action == "I") {
+        addClass += " insert-row";
+      } else if (action == "U") {
+        //				addClass += ' update-row';
+      } else if (action == "D") {
+        addClass += " delete-row";
+      }
+    }
+
+    var tr = $(
+      `&lt;tr class="a ${addClass} ${(rowIdx + 1) % 2 == 0 ? "even" : "odd"}"/>`
+    )
+      .css({
+        width: this.totalWidth + "px",
+        top: rowIdx * this.rowHeight,
+        height: this.rowHeight + "px",
+        "line-height": this.rowHeight + "px",
+      })
+      .data("index", rowIdx)
+      .appendTo(this.gridEle);
+
+    // this.renderIndexCell(tr, rowIdx, action);
+
+    var widthArray = [];
+    var header = `${this.config.scrollEle}_header`;
+    $("#" + header + " table thead tr th").each(function () {
+      widthArray.push($(this).css("width"));
+    });
+
+    if (action == "U") {
+      for (var i = 0; i &lt; this.columns.length; i++) {
+        let columnType = this.columns[i].COLUMN_TYPE;
+        if (columnType == "tid" || columnType == "rowid") {
+          continue;
+        }
+        let column = this.columns[i].COLUMN_NAME;
+        if (data["*-origin-data-*"][column] == undefined) {
+          if (columnType == "bytea") {
+            this.renderCell(
+              data,
+              tr,
+              rowIdx,
+              i,
+              this.columns[i],
+              "[object]",
+              "",
+              widthArray[i]
+            );
+          } else {
+            this.renderCell(
+              data,
+              tr,
+              rowIdx,
+              i,
+              this.columns[i],
+              data[column],
+              "",
+              widthArray[i]
+            );
+          }
+        } else {
+          if (columnType == "bytea") {
+            this.renderCell(
+              data,
+              tr,
+              rowIdx,
+              i,
+              this.columns[i],
+              "[object]",
+              "",
+              widthArray[i]
+            );
+          } else {
+            this.renderCell(
+              data,
+              tr,
+              rowIdx,
+              i,
+              this.columns[i],
+              data[column],
+              "update-cell",
+              widthArray[i]
+            );
+          }
+        }
+      }
+    } else {
+      for (var i = 0; i &lt; this.columns.length; i++) {
+        let columnType = this.columns[i].COLUMN_TYPE;
+        if (columnType == "tid" || columnType == "rowid") {
+          continue;
+        }
+        let column = this.columns[i].COLUMN_NAME;
+
+        if (columnType == "bytea") {
+          this.renderCell(
+            data,
+            tr,
+            rowIdx,
+            i,
+            this.columns[i],
+            "[object]",
+            "",
+            widthArray[i]
+          );
+        } else {
+          this.renderCell(
+            data,
+            tr,
+            rowIdx,
+            i,
+            this.columns[i],
+            data[column],
+            "",
+            widthArray[i]
+          );
+        }
+      }
+    }
+
+    return tr;
+  }
+
+  renderCell(rowData, tr, rowIdx, colIdx, column, data, addClass, headerData) {
+    if (this.cursorIndex.row == rowIdx &amp;&amp; this.cursorIndex.col == colIdx) {
+      //첫 컬럼 커서 클래스
+      // addClass += " cursor";
+    }
+
+    if (data == undefined) {
+      data = "";
+    } else if (typeof data == "object") {
+      data = JSON.stringify(data);
+    }
+
+    let rendered = data;
+    let title = data;
+
+    if (typeof data == "string") {
+      if (data.split("\n").length > 1) {
+        rendered = data.split("\n")[0];
+      }
+    }
+
+    if (column.render != undefined) {
+      rendered = column.render(rowData, data);
+    }
+
+    // $(
+    //   "&lt;td class='" +
+    //     column.class +
+    //     " " +
+    //     addClass +
+    //     "' title='" +
+    //     rendered +
+    //     "'>" +
+    //     rendered +
+    //     "&lt;/td>"
+    // )
+
+    $(
+      `&lt;td class="${column.class} ${addClass}" data-value="${title}" style="width: ${headerData}"> ${rendered} &lt;/td>`
+    )
+      // .css({
+      //   width: this.columns[colIdx].COLUMN_WIDTH + "px",
+      //   "font-size": this.fontSize + "px",
+      // })
+      .data("index", { row: rowIdx, col: colIdx })
+      .data("column", column.COLUMN_NAME)
+      .data("type", column.COLUMN_TYPE)
+      .appendTo(tr);
+  }
+
+  renderIndexCell(tr, rowIdx, action) {
+    if (action != "") {
+      $("&lt;td class='index-cell'>" + action + "&lt;/td>").appendTo(tr);
+    } else {
+      $("&lt;td class='index-cell'>" + rowIdx + "&lt;/td>").appendTo(tr);
+    }
+  }
+
+  insertRow(callback) {
+    let ready = false;
+    if (this.config.insert &amp;&amp; this.config.insert.ready)
+      ready = this.config.insert.ready();
+
+    if (!ready) {
+      return;
+    }
+
+    var columns = this.columns;
+    var object = {};
+    object["*-ui-action-*"] = "I";
+
+    for (var i = 0; i &lt; columns.length; i++) {
+      if (columns[i].SORT_TYPE == 0) {
+        object[columns[i].COLUMN_NAME] = 0;
+      } else if (columns[i].SORT_TYPE == 2) {
+        object[columns[i].COLUMN_NAME] = this.currentTime();
+      } else {
+        object[columns[i].COLUMN_NAME] = "";
+      }
+    }
+
+    this.data.unshift(object);
+    this.refresh();
+
+    this.setCursor(0);
+
+    this.pushUndo("I", { row: 0 }, object);
+
+    if (callback) {
+      callback();
+    } else {
+      if (this.config.insert &amp;&amp; this.config.insert.callback)
+        this.config.insert.callback();
+    }
+  }
+
+  editingCell(callback) {
+    let ready = false;
+    if (this.config.update &amp;&amp; this.config.update.ready)
+      ready = this.config.update.ready();
+
+    if (!ready) {
+      return;
+    }
+
+    var editingCell = this.getElement(
+      this.cursorIndex.row,
+      this.cursorIndex.col
+    );
+    editingCell.addClass("editing-cell");
+
+    var oldValue = editingCell.text();
+    editingCell.text("");
+
+    var input = document.createElement("input");
+    input.className = "editor-tab-modify option-td__input";
+    input.placeholder = "입력";
+    input.data = oldValue;
+    input.type = "text";
+    $(editingCell).append(input);
+
+    $(input)
+      .off("keydown")
+      .on("keydown", (e) => this.onKeyDownCellEditing(e, oldValue));
+    $(input)
+      .off("blur")
+      .on("blur", (e) => this.onBlurCellEditing(e, oldValue, callback));
+
+    $(input).val(oldValue);
+    $(input).select();
+  }
+
+  onKeyDownCellEditing(e, oldValue) {
+    e.stopPropagation();
+
+    var input = $(e.currentTarget);
+    var td = input.parent();
+
+    if (e.keyCode == 27) {
+      td.removeClass("editing-cell");
+      td.html(oldValue);
+      input.remove();
+      this.gridEle.focus();
+    } else if (e.keyCode == 13) {
+      input.blur();
+    }
+  }
+
+  onBlurCellEditing(e, oldValue, callback) {
+    e.stopPropagation();
+
+    var input = $(e.currentTarget);
+    var td = input.parent();
+
+    //이전값과 동일하면 변경 되돌리기
+    if ($.trim(input.val()) == oldValue) {
+      td.removeClass("editing-cell");
+      td.html(oldValue);
+      input.remove();
+      this.gridEle.focus();
+      return;
+    }
+
+    td.removeClass("editing-cell");
+    var cellIdx = td.data("index");
+    var column = td.data("column");
+    var value = input.val();
+    input.remove();
+
+    this.updateCell(cellIdx, column, value, callback);
+  }
+
+  updateCell(cellIdx, column, val, callback) {
+    var data = this.getData(cellIdx.row);
+    var dataType = typeof data[column];
+    var value;
+
+    if (dataType == "number") {
+      if (isNaN(val)) {
+        value = 0;
+      } else {
+        value = Number(val);
+      }
+    } else {
+      value = $.trim(val);
+    }
+
+    var undoData = {};
+    undoData["column"] = column;
+    undoData["value"] = data[column];
+
+    if (data["*-ui-action-*"] != "I") {
+      if (!data.hasOwnProperty("*-origin-data-*")) {
+        data["*-origin-data-*"] = {};
+        undoData["isFirstUpdate"] = true;
+      }
+
+      data["*-ui-action-*"] = "U";
+      data["*-origin-data-*"][column] = data[column];
+    }
+
+    this.pushUndo("U", cellIdx, undoData);
+
+    data[column] = value;
+
+    this.refresh(false);
+    this.gridEle.focus();
+
+    if (callback) {
+      callback();
+    } else {
+      if (this.config.update &amp;&amp; this.config.update.callback)
+        this.config.update.callback();
+    }
+  }
+
+  removeRow(callback) {
+    let ready = false;
+    if (this.config.remove &amp;&amp; this.config.remove.ready)
+      ready = this.config.remove.ready();
+
+    if (!ready) {
+      return;
+    }
+
+    let lastIdx = 0;
+    let rows = Array.from(
+      new Set(Array.from(this.selectedData.values()).map((x) => x.index.row))
+    );
+    var dataArr = [];
+    var deleteAr = [];
+    for (var i = 0, size = rows.length; i &lt; size; i++) {
+      let data = this.getData(rows[i]);
+      if (data["*-ui-action-*"] == "I") {
+        dataArr.push(data);
+        deleteAr.push(rows[i]);
+      } else {
+        dataArr.push(null);
+        this.getData(rows[i])["*-ui-action-*"] = "D";
+      }
+
+      if (i == size - 1) {
+        lastIdx = rows[i];
+      }
+    }
+
+    //중복 제거 및 내림차순 정렬
+    deleteAr = deleteAr.reverse();
+
+    for (var i = 0; i &lt; deleteAr.length; i++) {
+      this.removeData(deleteAr[i]);
+    }
+
+    this.pushUndo("D", rows, dataArr);
+    this.refresh(false);
+
+    if (callback) {
+      callback();
+    } else {
+      if (this.config.remove &amp;&amp; this.config.remove.callback)
+        this.config.remove.callback();
+    }
+  }
+}
+
+class PetraFilterList {
+  constructor(config) {
+    // cofing set
+    this.config = config;
+    this.scrollEle = $("#" + config.scrollEle);
+    this.gridEle = $("#" + config.gridEle);
+    this.rowHeight = config.rowHeight;
+
+    // 변수 초기화
+    this.virtureHeight = 0; // 가상 높이
+    this.scrollHeight = 0; // 실제 높이
+    this.pageHeight = 3000; // 페이지 높이
+    this.pageCount = 0; // 페이지 개수
+    this.viewHeight = 300; // view 높이
+    this.skipCoefficient = 0; // 특정 스크롤 위치로 넘길때 skip 하는 계수
+    this.page = 0; // 현재 페이지
+    this.pageOffset = 0; // 현재 페이지 위치
+    this.bufferRowCount = 5; // 위 아래로 여분의 로우 갯수(성능 관련)
+    this.prevScrollTop = 0; // 이전 스크롤 위치
+    this.rows = {}; // 보여지는 tr 엘리먼트
+    this.data = []; // 실제 데이터 list
+    this.checkedData = {}; // 체크한 데이터 list
+    this.lastX = 0;
+
+    this.initialize();
+  }
+
+  initialize() {
+    this.initViewConfig();
+    this.initScrollConfig();
+    this.scrollEle.scroll((e) => this.onScroll(e));
+  }
+
+  initViewConfig() {
+    this.viewHeight = this.config.viewHeight;
+    this.scrollEle.addClass("petra-grid-wrapper").css({
+      height: this.viewHeight + "px",
+      width: this.config.width + "px",
+    });
+  }
+
+  initScrollConfig() {
+    let totalHeight = this.config.rowHeight * this.data.length;
+
+    this.gridEle.addClass("petra-grid-content").css({
+      width: this.config.width - 17 + "px",
+      height: totalHeight + "px",
+    });
+    this.virtureHeight = totalHeight;
+    this.scrollHeight = totalHeight;
+    this.pageHeight = totalHeight / 100;
+    this.pageCount = Math.ceil(this.virtureHeight / this.pageHeight);
+    this.skipCoefficient =
+      (this.virtureHeight - this.scrollHeight) / (this.pageCount - 1);
+    this.pageOffset = 0;
+  }
+
+  setData(data) {
+    this.data = data;
+    this.refresh();
+    console.log("### data length " + data.length);
+    return this;
+  }
+
+  clear() {
+    this.checkedData = {};
+  }
+
+  getCheckedData() {
+    return this.checkedData;
+  }
+
+  isSearched(column) {
+    var keySet = Object.getOwnPropertyNames(this.checkedData);
+    if (keySet.length > 0) {
+      if (column == undefined) {
+        return true;
+      } else {
+        return keySet.includes(column);
+      }
+    } else {
+      return false;
+    }
+  }
+
+  refresh() {
+    console.log("### refresh");
+    this.removeAllRows();
+    this.initScrollConfig();
+    this.scrollEle.trigger("scroll");
+    this.scrollEle.scrollTop(0);
+  }
+
+  onClickChecked(e) {
+    var checkBox = $(e.currentTarget);
+    var column = checkBox.closest(".filter-wrapper").data("data").COLUMN_NAME;
+    var value = checkBox.val();
+    if (checkBox.is(":checked")) {
+      if (!this.checkedData.hasOwnProperty(column)) {
+        this.checkedData[column] = [];
+      }
+
+      this.checkedData[column].push(value);
+    } else {
+      this.checkedData[column].splice(
+        this.checkedData[column].indexOf(value),
+        1
+      );
+      if (this.checkedData[column].length == 0) {
+        delete this.checkedData[column];
+      }
+    }
+  }
+
+  onScroll(e) {
+    const currX = this.scrollEle.scrollLeft();
+    const x =
+      currX > this.lastX ? "right" : currX === this.lastX ? "upDown" : "left";
+    this.lastX = currX;
+
+    if (x == "upDown") {
+      var scrollTop = this.scrollEle.scrollTop();
+
+      if (Math.abs(scrollTop - this.prevScrollTop) > this.viewHeight) {
+        this.skipScroll(scrollTop);
+      } else {
+        this.stepScroll(scrollTop);
+      }
+
+      this.drawGrid(scrollTop);
+    } else {
+      $("#" + this.config.scrollEle + "_header").scrollLeft(currX);
+    }
+  }
+
+  stepScroll(scrollTop) {
+    //	    if (scrollTop + this.pageOffset > (this.page+1)*this.pageHeight) {	// next
+    //																			// page
+    //	    	this.page++;
+    //	    	this.pageOffset = Math.round(this.page * this.skipCoefficient);
+    //	        this.scrollEle.scrollTop(this.prevScrollTop = scrollTop - this.skipCoefficient);
+    //	        this.removeAllRows();
+    //	    }else if (scrollTop + this.pageOffset &lt; this.page*this.pageHeight) {	// prev
+    //																				// page
+    //	    	this.page--;
+    //	    	this.pageOffset = Math.round(this.page * this.skipCoefficient);
+    //	        this.scrollEle.scrollTop(this.prevScrollTop = scrollTop + this.skipCoefficient);
+    //	        this.removeAllRows();
+    //	    }else{
+    this.prevScrollTop = scrollTop;
+    //	    }
+  }
+
+  skipScroll(scrollTop) {
+    //	    this.page = Math.floor(scrollTop * ((this.virtureHeight-this.viewHeight) / (this.scrollHeight-this.viewHeight)) * (1/this.pageHeight));
+    //	    this.pageOffset = Math.round(this.page * this.skipCoefficient);
+    this.prevScrollTop = scrollTop;
+
+    this.removeAllRows();
+  }
+
+  removeAllRows() {
+    for (var i in this.rows) {
+      this.rows[i].remove();
+      delete this.rows[i];
+    }
+  }
+
+  drawGrid(scrollTop) {
+    var y = scrollTop + this.pageOffset;
+    var buffer = this.rowHeight * this.bufferRowCount;
+    var top = Math.max(0, Math.floor((y - buffer) / this.rowHeight));
+    var bottom = Math.min(
+      this.virtureHeight / this.rowHeight,
+      Math.ceil((y + this.viewHeight + buffer) / this.rowHeight)
+    );
+
+    for (var i in this.rows) {
+      if (i &lt; top || i > bottom) {
+        this.rows[i].remove();
+        delete this.rows[i];
+      }
+    }
+
+    var column = this.scrollEle
+      .closest(".filter-wrapper")
+      .data("data").COLUMN_NAME;
+    var isSearched = this.isSearched(column);
+    for (var i = top; i &lt; bottom; i++) {
+      if (!this.rows[i]) {
+        var rowData = this.data[i];
+        if (rowData == undefined) {
+          continue;
+        }
+
+        this.rows[i] = this.renderRow(i, rowData, column, isSearched);
+      }
+    }
+  }
+
+  renderRow(rowIdx, data, column, isSearched) {
+    var tr = $('&lt;tr title="' + data + '">&lt;/tr>')
+      .css({
+        width: this.config.width - 17 + "px",
+        top: rowIdx * this.rowHeight,
+        height: this.rowHeight + "px",
+        "line-height": this.rowHeight + "px",
+      })
+      .appendTo(this.gridEle);
+
+    if (isSearched &amp;&amp; this.checkedData[column].includes(data + "")) {
+      tr.html(
+        '&lt;input type="checkbox" name="chk_info" value="' +
+          data +
+          '" checked>' +
+          data
+      );
+    } else {
+      tr.html(
+        '&lt;input type="checkbox" name="chk_info" value="' + data + '">' + data
+      );
+    }
+
+    tr.find("input[type=checkbox]")
+      .off("click")
+      .on("click", (e) => this.onClickChecked(e));
+    return tr;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      <hr />This documentation generated by <a href='https://github.com/jsdoc/jsdoc' target='_blank'>JSDoc</a>
+    </footer>
+
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"API","link":"<a href=\"API.html\">API</a>"},{"title":"EDITOR","link":"<a href=\"EDITOR.html\">EDITOR</a>"},{"title":"SQL","link":"<a href=\"SQL.html\">SQL</a>"},{"title":"SQL#camelToUnderscore","link":"<a href=\"SQL.html#camelToUnderscore\">SQL &rtrif; camelToUnderscore</a>"},{"title":"SQL#closeConnection","link":"<a href=\"SQL.html#closeConnection\">SQL &rtrif; closeConnection</a>"},{"title":"SQL#getExecutionSql","link":"<a href=\"SQL.html#getExecutionSql\">SQL &rtrif; getExecutionSql</a>"},{"title":"SQL#keywordCheck","link":"<a href=\"SQL.html#keywordCheck\">SQL &rtrif; keywordCheck</a>"},{"title":"SQL#moreData","link":"<a href=\"SQL.html#moreData\">SQL &rtrif; moreData</a>"},{"title":"SQL#multiQuery","link":"<a href=\"SQL.html#multiQuery\">SQL &rtrif; multiQuery</a>"},{"title":"SQL#numberFormat","link":"<a href=\"SQL.html#numberFormat\">SQL &rtrif; numberFormat</a>"},{"title":"SQL#selectCheck","link":"<a href=\"SQL.html#selectCheck\">SQL &rtrif; selectCheck</a>"},{"title":"SQL#setSqlColumns","link":"<a href=\"SQL.html#setSqlColumns\">SQL &rtrif; setSqlColumns</a>"},{"title":"SQL#singleQuery","link":"<a href=\"SQL.html#singleQuery\">SQL &rtrif; singleQuery</a>"},{"title":"SQL#sqlResultInfo","link":"<a href=\"SQL.html#sqlResultInfo\">SQL &rtrif; sqlResultInfo</a>"},{"title":"SQL#sqlSystemInfo","link":"<a href=\"SQL.html#sqlSystemInfo\">SQL &rtrif; sqlSystemInfo</a>"},{"title":"delete","link":"<a href=\"API.delete.html\">delete</a>"},{"title":"get","link":"<a href=\"API.get.html\">get</a>"},{"title":"post","link":"<a href=\"API.post.html\">post</a>"},{"title":"put","link":"<a href=\"API.put.html\">put</a>"},{"title":"CHECK","link":"<a href=\"CHECK.html\">CHECK</a>"},{"title":"isEmpty","link":"<a href=\"CHECK.isEmpty.html\">isEmpty</a>"},{"title":"clearHighlightText","link":"<a href=\"EDITOR.clearHighlightText.html\">clearHighlightText</a>"},{"title":"getAllText","link":"<a href=\"EDITOR.getAllText.html\">getAllText</a>"},{"title":"highlightText","link":"<a href=\"EDITOR.highlightText.html\">highlightText</a>"},{"title":"initialize","link":"<a href=\"EDITOR.initialize.html\">initialize</a>"},{"title":"setAllText","link":"<a href=\"EDITOR.setAllText.html\">setAllText</a>"},{"title":"action","link":"<a href=\"SQL.action.html\">action</a>"},{"title":"align","link":"<a href=\"SQL.action.align.html\">align</a>"},{"title":"execute","link":"<a href=\"SQL.execute.html\">execute</a>"},{"title":"isExistEditor","link":"<a href=\"SQL.isExistEditor.html\">isExistEditor</a>"},{"title":"sort","link":"<a href=\"SQL.sort.html\">sort</a>"},{"title":"toTransactionList","link":"<a href=\"SQL.toTransactionList.html\">toTransactionList</a>"},{"title":"executingButtonClickEvent","link":"<a href=\"global.html#executingButtonClickEvent\">executingButtonClickEvent</a>"},{"title":"toggleTransaction","link":"<a href=\"global.html#toggleTransaction\">toggleTransaction</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
+
+    
+
+    
+
+    
+
+    
+
+
+  </body>
+
+</html>

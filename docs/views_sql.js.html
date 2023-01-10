@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Adding favicon -->
+    
+
+    <!-- Adding meta -->
+    
+
+    <!-- Adding external script-->
+    
+
+    <!-- Adding external style-->
+    
+
+    <!-- Adding scripts-->
+    
+
+    <!-- Adding style-->
+    
+    
+    <link type="text/css" rel="stylesheet" href="custom-jsdoc.css">
+    
+    
+
+    <!-- Adding overlay script-->
+    
+
+    <!-- Adding overlay style-->
+    
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css"
+      integrity="sha512-pYQcc5kgavar0ah58/O8hw/6Tbo3mWlmQTmvoi1i96cBz7jQYS9as5J+Nfy32rAHY6CgR9ExwnFMcBdGVcKM7g=="
+      crossorigin="anonymous" />
+    
+
+
+    <title>
+      views/sql.js
+    </title>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/third-party/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/third-party/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/reset.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-base.css">
+    <link type="text/css" rel="stylesheet" href="styles/clean-jsdoc-theme-light.css">
+    
+    <svg aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="display:none">
+    <defs>
+        <symbol id="copy-icon" viewbox="0 0 488.3 488.3">
+            <g>
+                <path
+                    d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z" />
+                <path
+                    d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6    V38.6C439.65,17.3,422.35,0,401.05,0z" />
+            </g>
+        </symbol>
+        <symbol id='search-icon' viewBox="0 0 512 512">
+            <g>
+                <g>
+                    <path
+                        d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474    c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323    c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848    S326.847,409.323,225.474,409.323z" />
+                </g>
+            </g>
+            <g>
+                <g>
+                    <path
+                        d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328    c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z" />
+                </g>
+            </g>
+        </symbol>
+        <symbol id="down-icon" viewBox="0 0 16 16">
+            <path 
+                fill-rule="evenodd" 
+                clip-rule="evenodd" 
+                d="M12.7803 6.21967C13.0732 6.51256 13.0732 6.98744 12.7803 7.28033L8.53033 11.5303C8.23744 11.8232 7.76256 11.8232 7.46967 11.5303L3.21967 7.28033C2.92678 6.98744 2.92678 6.51256 3.21967 6.21967C3.51256 5.92678 3.98744 5.92678 4.28033 6.21967L8 9.93934L11.7197 6.21967C12.0126 5.92678 12.4874 5.92678 12.7803 6.21967Z"
+            >
+            </path>
+        </symbol>
+    </defs>
+</svg>
+  </head>
+
+  <body>
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-heading" id="navbar-heading"><a href="index.html"><h2 class="navbar-heading-text">Home</h2></a></div><div class="search-box" id="search-box"><div class="search-box-input-container"><input class="search-box-input" type="text" placeholder="Search..." id="search-box-input" /><svg class="search-icon" alt="search-icon"><use xlink:href="#search-icon"></use></svg></div><div class="search-item-container" id="search-item-container"><ul class="search-item-ul" id="search-item-ul"></ul></div></div><div class="sidebar-main-content" id="sidebar-main-content"><div class="accordion collapsed" id="8867133" > <h3 class="accordion-heading">Classes<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="API.html">API</a></li><li class="accordion-list" id=""><a href="EDITOR.html">EDITOR</a></li><li class="accordion collapsed child" id=9350285><div class="accordion-heading child"><a href="SQL.html">SQL</a><svg><use xlink:href="#down-icon"></use></svg></div><ul class='methods accordion-content'><li data-type='method'><a href="SQL.html#camelToUnderscore">camelToUnderscore</a></li><li data-type='method'><a href="SQL.html#closeConnection">closeConnection</a></li><li data-type='method'><a href="SQL.html#getExecutionSql">getExecutionSql</a></li><li data-type='method'><a href="SQL.html#keywordCheck">keywordCheck</a></li><li data-type='method'><a href="SQL.html#moreData">moreData</a></li><li data-type='method'><a href="SQL.html#multiQuery">multiQuery</a></li><li data-type='method'><a href="SQL.html#numberFormat">numberFormat</a></li><li data-type='method'><a href="SQL.html#selectCheck">selectCheck</a></li><li data-type='method'><a href="SQL.html#setSqlColumns">setSqlColumns</a></li><li data-type='method'><a href="SQL.html#singleQuery">singleQuery</a></li><li data-type='method'><a href="SQL.html#sqlResultInfo">sqlResultInfo</a></li><li data-type='method'><a href="SQL.html#sqlSystemInfo">sqlSystemInfo</a></li></ul></li></ul> </div><div class="accordion collapsed" id="2358335" > <h3 class="accordion-heading">Namespaces<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="API.delete.html">delete</a></li><li class="accordion-list" id=""><a href="API.get.html">get</a></li><li class="accordion-list" id=""><a href="API.post.html">post</a></li><li class="accordion-list" id=""><a href="API.put.html">put</a></li><li class="accordion-list" id=""><a href="CHECK.html">CHECK</a></li><li class="accordion-list" id=""><a href="CHECK.isEmpty.html">isEmpty</a></li><li class="accordion-list" id=""><a href="EDITOR.clearHighlightText.html">clearHighlightText</a></li><li class="accordion-list" id=""><a href="EDITOR.getAllText.html">getAllText</a></li><li class="accordion-list" id=""><a href="EDITOR.highlightText.html">highlightText</a></li><li class="accordion-list" id=""><a href="EDITOR.initialize.html">initialize</a></li><li class="accordion-list" id=""><a href="EDITOR.setAllText.html">setAllText</a></li><li class="accordion-list" id=""><a href="SQL.action.html">action</a></li><li class="accordion-list" id=""><a href="SQL.action.align.html">align</a></li><li class="accordion-list" id=""><a href="SQL.execute.html">execute</a></li><li class="accordion-list" id=""><a href="SQL.isExistEditor.html">isExistEditor</a></li><li class="accordion-list" id=""><a href="SQL.sort.html">sort</a></li><li class="accordion-list" id=""><a href="SQL.toTransactionList.html">toTransactionList</a></li></ul> </div><div class="accordion collapsed" id="7334391" > <h3 class="accordion-heading">Global<svg><use xlink:href="#down-icon"></use></svg></h3><ul class="accordion-content"><li class="accordion-list" id=""><a href="global.html#executingButtonClickEvent">executingButtonClickEvent</a></li><li class="accordion-list" id=""><a href="global.html#toggleTransaction">toggleTransaction</a></li></ul> </div>
+      
+
+    </nav>
+    <div class="navbar-ham" id="navbar-ham">
+      <div>
+        <div class="first"></div>
+        <div class="second"></div>
+        <div class="third"></div>
+      </div>
+    </div>
+
+    <div id="main" class="main-content">
+      
+      <h1 id='page-title' class="page-title">
+        views/sql.js
+      </h1>
+      
+
+      
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+
+/**
+ * SQL
+ * @class
+ * @property {Object} action 액션
+ * @property {function} action.run 실행
+ * @property {function} action.align 정렬
+ * @since 2022.01.10
+ * @author 장준영
+ */
+const SQL = {
+  accessFlag: true,
+
+  /**
+   * 액션
+   * @memberof SQL
+   * @namespace
+   * @since 2022.01.10
+   * @author 장준영
+   */
+  action: {
+    run: ($editor) => {
+      if (SQL.accessFlag) {
+        SQL.accessFlag = false;
+        SQL.prototype.execute(SQL.prototype.getExecutionSql($editor));
+      } else {
+        alert("작업 진행중");
+      }
+    },
+
+    /**
+     * SQL
+     * @memberof SQL.action
+     * @namespace
+     * @param {Object} $editor 에디터
+     * @since 2022.01.12
+     * @author 김희수
+     */
+    align: ($editor) => {
+      let sql = EDITOR.prototype.getAllText($editor);
+
+      SQL.prototype.sort($editor, sql);
+    },
+  },
+};
+
+SQL.prototype = {};
+SQL.prototype.getExecutionSqlPrev = () => {};
+/**
+ * SQL문을 리턴해주는 함수
+ * $editor.getSelectedText()로 드래그되어있는 sql문을 가져오고
+ * 가져온 sql문의 길이가 0이면(드래그된 sql문이 없으면)
+ * 에디터에 입력된 텍스트를 전부 가져와 ;를 기준으로 잘라 가장 위의 텍스트를 잘라온다.
+ */
+SQL.prototype.getExecutionSql = ($editor) => {
+  $("#petraGridTable").addClass("table-loader");
+  let sqlAll = $editor.getSelectedText();
+
+  if (sqlAll.length == 0) {
+    sqlAll = $editor.getValue();
+  }
+
+  let sqls = sqlAll.split(";");
+  let sqlText = $.trim(sqls[0]);
+
+  return sqlText;
+};
+
+/**
+ * SQL 실행
+ * @memberof SQL
+ * @namespace SQL.execute
+ * @param {string} sql SQL 텍스트
+ * @since 2022.01.25
+ * @author 장준영, 김희수
+ * sql문을 가지고 실제로 쿼리를 실행하고 결과를 가져오는 함수
+ * 쿼리 실행결과가 성공, 실패시 resultFlag 를 true로 다시 돌려줘야함
+ * address는 현재 ui가 소하와 연결된건지 postgre와 연결된건지 확인하는 용도
+ */
+SQL.prototype.execute = (sql) => {
+  let resultFlag = false;
+  let firstText = sql.split(" ")[0];
+  let address = $("#dbAddress").val();
+  let nodeAddress = $("#address").val();
+  // if (SQL.prototype.keywordCheck(firstText)) { 키워드 체크가 기본이나 현재는 SELECT만 체크하면 되기에 우선 분리함
+  if (SQL.prototype.selectCheck(firstText)) {
+    if ($(".editor-execution_down").hasClass("down")) {
+      $(".editor-execution_down").trigger("click");
+    }
+    sessionStorage.setItem("sql", sql);
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        body: {
+          sql: sql,
+          fetchSize: 1000,
+          retrieveType: 0,
+        },
+        address: address,
+        database: sessionStorage.getItem("database"),
+      }),
+    };
+    fetch(`${nodeAddress}/editor/sqlExecute`, options)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.code != 0) {
+          console.log(data);
+          // alert(data.message);
+          $("#systemInfoArea").text(data.message);
+          $("#tabs ul li").eq(1).click();
+        } else {
+          resultFlag = true;
+          console.log(data);
+          if (Array.isArray(data)) {
+            SQL.prototype.multiQuery(data);
+          } else {
+            SQL.prototype.singleQuery(data.data);
+          }
+        }
+
+        SQL.accessFlag = true;
+        return sql;
+      })
+      .catch((e) => {
+        console.log(e);
+        alert(e.message);
+        SQL.accessFlag = true;
+      });
+  } else {
+    // alert("사용할 수 없는 키워드 입니다.");
+    $("#systemInfoArea").text("사용할 수 없는 키워드 입니다.");
+    $("#tabs ul li").eq(1).click();
+    SQL.accessFlag = true;
+  }
+
+  // console.log(`execute sql : ${sql}`);
+  // let possibleRegExp = /^\s*\S+/gim; // test : 단일 공백 값 제외 모두 통과
+  // let requestData = {
+  //   retrieveType: 0,
+  //   fetchSize: 200,
+  //   sql: sql,
+  //   params: new Array(),
+  // };
+  // let responseData = {
+  //   code: 200,
+  //   data: sql,
+  // };
+
+  // // test
+  // return new Promise((resolve, reject) => {
+  //   if (resultFlag) {
+  //     resolve(responseData);
+  //   } else {
+  //     responseData.code = 500;
+  //     reject(responseData);
+  //   }
+  // });
+};
+
+/**
+ * 키워드를 체크하는 함수
+ */
+SQL.prototype.keywordCheck = (sql) => {
+  let sqlText = sql.toUpperCase();
+  let keywordList = [
+    "SELECT",
+    "INSERT",
+    "UPDATE",
+    "DELETE",
+    "CREATE",
+    "ALTER",
+    "TRUNCATE",
+    "DROP",
+    "CALL",
+  ];
+
+  if (keywordList.indexOf(sqlText) &lt; 0) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+/**
+ * 키워드를 체크하는 함수에서 select만 체크하게 빼둔 함수
+ */
+SQL.prototype.selectCheck = (sql) => {
+  let sqlText = sql.toUpperCase();
+  if (sqlText === "SELECT") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+/**
+ * 단일 쿼리 수행 결과에 대한 함수
+ */
+SQL.prototype.singleQuery = (info) => {
+  let request = info.request;
+  let response = info.response;
+  response["sql"] = request.sql;
+
+  if (response.resultCode === 1000) {
+    SQL.prototype.sqlSystemInfo(response);
+    SQL.prototype.setSqlColumns(response);
+    return request.sql;
+    // $.PetraGrid("resultTableWrapper").clear();
+  } else {
+    SQL.prototype.sqlSystemInfo(response);
+    console.log(response);
+    // alert(response.resultMessage);
+    return request.sql;
+  }
+};
+
+/**
+ * 다중 쿼리 수행 결과에 대한 함수
+ */
+SQL.prototype.multiQuery = (info) => {
+  console.log("멀티쿼리 지원 예정중 현재 미지원");
+  alert("멀티쿼리 지원 예정중 현재 미지원");
+  // if (contents.length &lt; 1) {
+  //   return;
+  // }
+
+  // let contentsInfo = contents[contents.length - 1].data.response;
+  // if (contentsInfo.resultCode === 1000) {
+  //   SQL.prototype.sqlSystemInfo(contentsInfo);
+
+  //   var stopResult = false;
+  //   for (var i = 0; i &lt; contents.length; i++) {
+  //     if (contents[i].data.response.exception == undefined &amp;&amp; !stopResult) {
+  //       let columns = new Array();
+  //       let column = {};
+  //       let temp;
+  //       let keys = Object.keys(contents[i].data.response.columns[0]);
+
+  //       for (let j = 0; j &lt; contents[i].data.response.columns.length; j++) {
+  //         column = {};
+  //         for (let k = 0; k &lt; keys.length; k++) {
+  //           column[SQL.prototype.camelToUnderscore(keys[k])] =
+  //             contents[i].data.response.columns[j][keys[k]];
+  //         }
+  //         columns.push(column);
+  //       }
+
+  //       contents[i].data.response.columns = columns;
+
+  //       SQL.prototype.sqlResultInfo(
+  //         contents[i].data.response,
+  //         contents[i].data.response.columns,
+  //         contents[i].data.response.sql
+  //       );
+  //       stopResult = true;
+  //     }
+  //   }
+
+  //   if (!stopResult) {
+  //     if ($.PetraGrid("resultTableWrapper")) {
+  //       $.PetraGrid("resultTableWrapper").clear();
+  //     }
+  //   }
+  // } else {
+  //   alert(contentsInfo.resultMessage);
+  // }
+};
+
+/**
+ * 컬럼을 petra-grid에 맞게 변형시키는 함수
+ */
+SQL.prototype.setSqlColumns = (response) => {
+  let columns = new Array();
+  let column = {};
+  let keys = Object.keys(response.columns[0]);
+  for (let j = 0; j &lt; response.columns.length; j++) {
+    column = {};
+    for (let k = 0; k &lt; keys.length; k++) {
+      column[SQL.prototype.camelToUnderscore(keys[k])] =
+        response.columns[j][keys[k]];
+    }
+    columns.push(column);
+  }
+  response.columns = columns;
+  SQL.prototype.sqlResultInfo(response, response.columns, response.sql);
+};
+
+/**
+ * 카멜 변환 함수
+ */
+SQL.prototype.camelToUnderscore = (key) => {
+  let result = key.replace(/([A-Z])/g, " $1");
+  return result.split(" ").join("_").toUpperCase();
+};
+
+/**
+ * 쿼리 결과에 대한 정보를 ui에 표현해주는 함수
+ */
+SQL.prototype.sqlSystemInfo = (info) => {
+  let $editorBar = $("#editorBottom .editor-summary");
+  let enter = "\n";
+  let dblenter = "\n\n";
+  let systemCall = "[ SQL 수행 정보 ] " + enter;
+  systemCall += "SQL type : SELECT " + enter;
+  systemCall +=
+    info.resultCode == 1000
+      ? "수행 여부 : 성공" + dblenter
+      : "수행 여부 : 실패" + dblenter;
+  systemCall += "[ 결과 메시지 ]" + enter;
+
+  if (info.resultCode == 1000) {
+    if (info.hasOwnProperty("totalCount")) {
+      sessionStorage.setItem("totalCount", info.totalCount);
+    }
+    $editorBar.find(".query_type").text(info.sqlType);
+    $editorBar.find(".execute-time").text(info.endTime);
+    $editorBar
+      .find(".execute-summary")
+      .text(
+        `${SQL.prototype.numberFormat(
+          info.resultCount
+        )} / ${SQL.prototype.numberFormat(
+          sessionStorage.getItem("totalCount")
+        )} row(s) fetched`
+      );
+
+    systemCall +=
+      "실행 결과 : " +
+      info.sqlType +
+      ", fatched " +
+      info.resultCount +
+      " record(s)" +
+      dblenter;
+    systemCall += "[ 수행 SQL ]" + enter;
+    systemCall += $.trim(info.sql);
+
+    $(".query_state").switchClass("fail", "success");
+    $("#systemInfoArea").text(systemCall);
+  } else {
+    $editorBar.find(".query_type").text("-");
+    $editorBar.find(".execute-time").text(info.endTime);
+    $editorBar.find(".execute-summary").text("FAIL");
+
+    systemCall += "Result Code : " + info.resultCode + enter;
+    systemCall += "Result Message : " + info.resultMessage + dblenter;
+    systemCall += "[ 수행 SQL ]" + enter;
+    systemCall += $.trim(info.sql);
+
+    $(".query_state").switchClass("success", "fail");
+    $("#systemInfoArea").text(systemCall);
+    $("#tabs ul li").eq(1).click();
+  }
+};
+
+/**
+ * 쿼리 결과를 petra-grid에 출력하는 함수
+ */
+SQL.prototype.sqlResultInfo = (data, columns, sql) => {
+  try {
+    $("#petraGridWrapper").data("SQL", sql);
+    var table = $.PetraGrid("petraGridWrapper");
+
+    if (table == undefined) {
+      table = new PetraGrid({
+        scrollEle: "petraGridWrapper",
+        gridEle: "petraGridTable",
+        headerEle: "petraGridWrapper_header",
+        rowHeight: 40,
+        viewHeight: 250,
+        columns: columns,
+        fontSize: 12,
+        search: true,
+        scrollMore: {
+          disabled: false,
+          callback: function () {
+            SQL.prototype.moreData();
+          },
+        },
+      });
+    }
+
+    table.setData(data.resultData, columns);
+    $("#tabs ul li").eq(0).click();
+
+    setTimeout(function () {
+      $("#petraGridTable").removeClass("table-loader");
+      Tipped.create("table.petraGrid tbody tr td", "&lt;div>Loading...&lt;/div>", {
+        // hideOn: "click",
+        // showOn: "click",
+        radius: true,
+        showDelay: 750,
+        onShow: function (content, element) {
+          let value = $(element).data("value");
+          var html = `&lt;textarea wrap="off" class="tippedTextArea">${value}&lt;/textarea>`;
+          $(content).html(html);
+          Tipped.refresh(element);
+        },
+        // padding: 0,
+      });
+    }, 1000);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+/**
+ * 잔여 조회 함수
+ */
+SQL.prototype.moreData = () => {
+  SQL.accessFlag = false;
+  let nodeAddress = $("#address").val();
+  let address = $("#dbAddress").val();
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      body: {
+        sql: sessionStorage.getItem("sql"),
+        fetchSize: 1000,
+        retrieveType: 1,
+      },
+      address: address,
+      database: sessionStorage.getItem("database"),
+    }),
+  };
+  fetch(`${nodeAddress}/editor/sqlExecute`, options)
+    .then((response) => response.json())
+    .then((data) => {
+      let table = $.PetraGrid("petraGridWrapper");
+      if (data.code != 0) {
+        console.log(data);
+        // alert(data.message);
+        $("#systemInfoArea").text(data.message);
+        table.config.scrollMore.disabled = true;
+        $("#tabs ul li").eq(1).click();
+      } else {
+        let returnData = data.data.response;
+        returnData["sql"] = sessionStorage.getItem("sql");
+        delete returnData.totalCount;
+        SQL.prototype.sqlSystemInfo(returnData);
+        if (returnData.resultData.length > 0) {
+          if (table.isFiltered) {
+            table.data = [...table.data, ...returnData.resultData];
+          } else {
+            table.data = [...table.data, ...returnData.resultData];
+          }
+          let $editorBar = $("#editorBottom .editor-summary");
+          $editorBar
+            .find(".execute-summary")
+            .text(
+              `${$.PetraGrid(
+                "petraGridWrapper"
+              ).length()} / ${sessionStorage.getItem(
+                "totalCount"
+              )} row(s) fetched`
+            );
+          table.refresh(false);
+
+          setTimeout(function () {
+            Tipped.create(
+              "table.petraGrid tbody tr td",
+              "&lt;div>Loading...&lt;/div>",
+              {
+                // hideOn: "click",
+                // showOn: "click",
+                radius: true,
+                showDelay: 750,
+                onShow: function (content, element) {
+                  let value = $(element).data("value");
+                  var html = `&lt;textarea wrap="off" class="tippedTextArea">${value}&lt;/textarea>`;
+                  $(content).html(html);
+                  Tipped.refresh(element);
+                },
+                // padding: 0,
+              }
+            );
+          }, 1000);
+        }
+
+        if (returnData.ended) {
+          table.config.scrollMore.disabled = true;
+        }
+        SQL.accessFlag = true;
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+      alert(e.message);
+      SQL.accessFlag = true;
+    });
+};
+
+/**
+ * 커넥션 종료 함수
+ */
+SQL.prototype.closeConnection = () => {
+  let address = $("#dbAddress").val();
+  let nodeAddress = $("#address").val();
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      address: address,
+      database: sessionStorage.database,
+    }),
+  };
+
+  fetch(`${nodeAddress}/editor/closeConnection`, options)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      sessionStorage.removeItem("database");
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+/**
+ * 숫자 변환 함수
+ */
+SQL.prototype.numberFormat = (str) => {
+  return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+/**
+ * SQL 정렬
+ * @memberof SQL
+ * @namespace SQL.sort
+ * @param {Object} $editor 에디터
+ * @param {string} text 정렬할 SQL 텍스트
+ * @returns {Object} 정렬된 SQL 데이터
+ * @since 2022.01.12
+ * @author 김희수
+ */
+SQL.prototype.sort = async ($editor, text) => {
+  let sortedSqlData = {};
+  let nodeAddress = $("#address").val();
+  await API.get(`${nodeAddress}/editor/sqlFormatter`, {
+    sql: text,
+  })
+    .then((res) => {
+      sortedSqlData = res.sql;
+
+      EDITOR.prototype.setAllText($editor, sortedSqlData.text);
+
+      if (sortedSqlData.errorFound) {
+        let $div = $(`&lt;div class="temp-sqlToFormat" style="display: none">`);
+        let $tags = null;
+
+        $div.append(sortedSqlData.html);
+        $tags = $div.find(".SQLErrorHighlight");
+        $tags.each(function () {
+          let $tag = $(this);
+
+          EDITOR.prototype.highlightText($editor, $tag.text());
+        });
+      }
+
+      $editor.updateSelectionMarkers();
+    })
+    .catch(() => {});
+
+  return sortedSqlData;
+};
+
+/**
+ * SQL 트랜잭션 목록 HTML으로 제공
+ * @memberof SQL
+ * @namespace SQL.toTransactionList
+ * @param {string} text SQL 텍스트
+ * @returns {string} 트랜잭션 목록 HTML 텍스트
+ * @since 2022.01.25
+ * @author 김희수
+ */
+SQL.prototype.toTransactionList = (text) => {
+  let verificationRegExp = /^\s*(SELECT\b)/im;
+  let accessibleRegExp = /^\s*(SELECT\b|COMMIT;$)/im;
+  let separationRegExpBySemicolon =
+    /(?!;|$)[^;'"]*(('|")(\\.|[^\\'\\"])*('|")[^;'"]*)*/gim;
+  let queries = [];
+  let unitsHtml = ``;
+  let queryWithinUnitHtml = ``;
+  let queryWithinUnitHeaderHtml = ``;
+  let unitCount = 1;
+  let separatedQueryData = {};
+  let queriesWithinUnit = [];
+
+  queries =
+    text.match(separationRegExpBySemicolon).map((query) => query + ";") || [];
+
+  for (let i = 0; i &lt; queries.length; i++) {
+    let query = queries[i];
+
+    queriesWithinUnit.push(query);
+
+    if (query.trim().toUpperCase() === "COMMIT;") {
+      separatedQueryData[`T${unitCount}`] = queriesWithinUnit;
+      queriesWithinUnit = [];
+      unitCount++;
+    }
+  }
+
+  console.log(separatedQueryData);
+  for (let unit in separatedQueryData) {
+    let queriesWithinUnit = separatedQueryData[unit];
+    let queryCountWithinUnit = queriesWithinUnit.length;
+    let accessControlTargetQueries = queriesWithinUnit
+      .map((query, index) =>
+        query.match(accessibleRegExp) === null ? index + 1 : -1
+      )
+      .filter((index) => index !== -1);
+    let firstIndexToCheck = accessControlTargetQueries[0] || null;
+    let lastIndexToCheck =
+      accessControlTargetQueries[accessControlTargetQueries.length - 1] ||
+      firstIndexToCheck;
+    let previousVerificationQuery =
+      firstIndexToCheck !== null
+        ? queriesWithinUnit
+            .slice(0, firstIndexToCheck - 1)
+            .filter((query) => query.match(verificationRegExp))[0] || null
+        : null;
+    let nextVerificationQuery =
+      lastIndexToCheck !== null
+        ? queriesWithinUnit
+            .slice(lastIndexToCheck)
+            .filter((query) => query.match(verificationRegExp))
+            .pop() || null
+        : null;
+
+    for (let i = 0; i &lt; queryCountWithinUnit; i++) {
+      let currentQuery = queriesWithinUnit[i];
+      let message = "";
+      let messageHtml = ``;
+      let isAccessControlTarget = false;
+      let isBeforeVerify = false;
+      let isAfterVerify = false;
+      let isExecutable = false;
+
+      queryWithinUnitHeaderHtml = ``;
+
+      if (i === 0) {
+        queryWithinUnitHtml = ``;
+        queryWithinUnitHeaderHtml = `&lt;td rowspan="${queryCountWithinUnit}" class="transaction-index">
+          ${unit}
+        &lt;/td>`;
+      }
+
+      isAccessControlTarget = accessibleRegExp.test(currentQuery) === false;
+      isBeforeVerify =
+        accessControlTargetQueries.length > 0 &amp;&amp;
+        queriesWithinUnit.indexOf(previousVerificationQuery) === i;
+      isAfterVerify =
+        accessControlTargetQueries.length > 0 &amp;&amp;
+        queriesWithinUnit.lastIndexOf(nextVerificationQuery) === i;
+      isExecutable =
+        isAccessControlTarget === false ||
+        (previousVerificationQuery &amp;&amp; nextVerificationQuery) !== null;
+
+      // TODO: DB 종류별 주석 체크 (한 줄/여러 줄)
+      // 한 줄 : /\s(--|#|\/\/|%)\s.*/gm
+      // 여러 줄 : /(\/\*)\s*?.*\s*?(\*\/)/gm
+
+      message =
+        isExecutable === false
+          ? previousVerificationQuery === null &amp;&amp; nextVerificationQuery === null
+            ? "전/후 검증 SQL이 없어 실행이 불가합니다."
+            : previousVerificationQuery === null
+            ? "전 검증 SQL이 없어 실행이 불가합니다."
+            : "후 검증 SQL이 없어 실행이 불가합니다."
+          : "전/후 데이터 변경 기록 통제 대상입니다.";
+      messageHtml = `&lt;div class="data-warning">${message}&lt;/div>`;
+
+      queryWithinUnitHtml += `&lt;tr class="${
+        isAccessControlTarget
+          ? `access-target`
+          : isBeforeVerify
+          ? `access-target_previous`
+          : isAfterVerify
+          ? `access-target_next`
+          : ``
+      }">
+        ${i === 0 ? queryWithinUnitHeaderHtml : ``}
+        &lt;td class="transaction-query" data-unit="${unit}">
+          &lt;span class="transaction-status ${
+            isExecutable ? `` : `disabled`
+          }">&lt;img>&lt;/span>
+          &lt;div class="transaction-data">
+            &lt;span>${currentQuery}&lt;/span>
+            ${isAccessControlTarget ? messageHtml : ``}
+          &lt;/div>
+        &lt;/td>
+      &lt;/tr>`;
+
+      if (currentQuery.trim().toUpperCase() === "COMMIT;") {
+        unitsHtml += `&lt;table>
+          &lt;tbody>
+            ${queryWithinUnitHtml}
+          &lt;/tbody>
+        &lt;/table>`;
+      }
+    }
+  }
+
+  return unitsHtml;
+};
+
+$(".editor-execute_navigation")
+  .find(".tab-content_execute")
+  .off("keydown")
+  .on("keydown", "textarea", function (event) {
+    if (event.which === 13 &amp;&amp; event.ctrlKey) {
+      event.preventDefault();
+
+      SQL.prototype.isExistEditor(event).then((editorId) => {
+        SQL.action.run(ace.edit(editorId));
+      });
+    }
+
+    if (event.ctrlKey &amp;&amp; event.altKey &amp;&amp; event.keyCode === 65) {
+      event.preventDefault();
+
+      SQL.prototype.isExistEditor(event).then((editorId) => {
+        SQL.action.align(ace.edit(editorId));
+      });
+    }
+  });
+
+$(".editor-execute_navigation")
+  .find(".button-execute_sql")
+  .click(function (event) {
+    SQL.prototype.isExistEditor(event).then((editorId) => {
+      SQL.action.run(ace.edit(editorId));
+    });
+  });
+
+$(".editor-execute_navigation")
+  .find(".button-sort_sql")
+  .click(function (event) {
+    SQL.prototype.isExistEditorInTab(event).then((editorId) => {
+      SQL.action.align(ace.edit(editorId));
+    });
+  });
+
+/**
+ * 탭 내 에디터 존재 여부 체크
+ * @memberof SQL
+ * @namespace SQL.isExistEditor
+ * @param {Object} event 발생 이벤트
+ * @returns 에디터 아이디
+ * @since 2022.03.15
+ * @author 김희수
+ */
+SQL.prototype.isExistEditorInTab = (event) => {
+  let $tabContent = $(event.target).closest(".tab-content_editor");
+  let editorId = $tabContent.find(".ace_editor").attr("id");
+
+  return new Promise((resolve, reject) => {
+    if (editorId) {
+      resolve(editorId);
+    } else {
+      // reject();
+    }
+  });
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    </div>
+
+    <footer class="footer" id="footer">
+      <hr />This documentation generated by <a href='https://github.com/jsdoc/jsdoc' target='_blank'>JSDoc</a>
+    </footer>
+
+    <script src="scripts/third-party/prettify.js"></script>
+    <script src="scripts/third-party/lang-css.js"></script>
+    <script type="text/javascript" src="scripts/misc.js"></script>
+
+    <script>prettyPrint();</script>
+    <script src="scripts/linenumber.js"></script>
+    <script src="scripts/fix-code-block.js"></script>
+    <script src="scripts/fix-navbar.js"></script>
+    
+      <script src="scripts/search.js"></script>
+      <script src="scripts/third-party/fuse.js"></script>
+      <script>
+        var list = [{"title":"API","link":"<a href=\"API.html\">API</a>"},{"title":"EDITOR","link":"<a href=\"EDITOR.html\">EDITOR</a>"},{"title":"SQL","link":"<a href=\"SQL.html\">SQL</a>"},{"title":"SQL#camelToUnderscore","link":"<a href=\"SQL.html#camelToUnderscore\">SQL &rtrif; camelToUnderscore</a>"},{"title":"SQL#closeConnection","link":"<a href=\"SQL.html#closeConnection\">SQL &rtrif; closeConnection</a>"},{"title":"SQL#getExecutionSql","link":"<a href=\"SQL.html#getExecutionSql\">SQL &rtrif; getExecutionSql</a>"},{"title":"SQL#keywordCheck","link":"<a href=\"SQL.html#keywordCheck\">SQL &rtrif; keywordCheck</a>"},{"title":"SQL#moreData","link":"<a href=\"SQL.html#moreData\">SQL &rtrif; moreData</a>"},{"title":"SQL#multiQuery","link":"<a href=\"SQL.html#multiQuery\">SQL &rtrif; multiQuery</a>"},{"title":"SQL#numberFormat","link":"<a href=\"SQL.html#numberFormat\">SQL &rtrif; numberFormat</a>"},{"title":"SQL#selectCheck","link":"<a href=\"SQL.html#selectCheck\">SQL &rtrif; selectCheck</a>"},{"title":"SQL#setSqlColumns","link":"<a href=\"SQL.html#setSqlColumns\">SQL &rtrif; setSqlColumns</a>"},{"title":"SQL#singleQuery","link":"<a href=\"SQL.html#singleQuery\">SQL &rtrif; singleQuery</a>"},{"title":"SQL#sqlResultInfo","link":"<a href=\"SQL.html#sqlResultInfo\">SQL &rtrif; sqlResultInfo</a>"},{"title":"SQL#sqlSystemInfo","link":"<a href=\"SQL.html#sqlSystemInfo\">SQL &rtrif; sqlSystemInfo</a>"},{"title":"delete","link":"<a href=\"API.delete.html\">delete</a>"},{"title":"get","link":"<a href=\"API.get.html\">get</a>"},{"title":"post","link":"<a href=\"API.post.html\">post</a>"},{"title":"put","link":"<a href=\"API.put.html\">put</a>"},{"title":"CHECK","link":"<a href=\"CHECK.html\">CHECK</a>"},{"title":"isEmpty","link":"<a href=\"CHECK.isEmpty.html\">isEmpty</a>"},{"title":"clearHighlightText","link":"<a href=\"EDITOR.clearHighlightText.html\">clearHighlightText</a>"},{"title":"getAllText","link":"<a href=\"EDITOR.getAllText.html\">getAllText</a>"},{"title":"highlightText","link":"<a href=\"EDITOR.highlightText.html\">highlightText</a>"},{"title":"initialize","link":"<a href=\"EDITOR.initialize.html\">initialize</a>"},{"title":"setAllText","link":"<a href=\"EDITOR.setAllText.html\">setAllText</a>"},{"title":"action","link":"<a href=\"SQL.action.html\">action</a>"},{"title":"align","link":"<a href=\"SQL.action.align.html\">align</a>"},{"title":"execute","link":"<a href=\"SQL.execute.html\">execute</a>"},{"title":"isExistEditor","link":"<a href=\"SQL.isExistEditor.html\">isExistEditor</a>"},{"title":"sort","link":"<a href=\"SQL.sort.html\">sort</a>"},{"title":"toTransactionList","link":"<a href=\"SQL.toTransactionList.html\">toTransactionList</a>"},{"title":"executingButtonClickEvent","link":"<a href=\"global.html#executingButtonClickEvent\">executingButtonClickEvent</a>"},{"title":"toggleTransaction","link":"<a href=\"global.html#toggleTransaction\">toggleTransaction</a>"}];
+        var options = 
+          setupSearch(list, options)
+      </script>
+    
+
+    
+
+    
+
+    
+
+    
+
+
+  </body>
+
+</html>
